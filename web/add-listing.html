@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add New Listing | EduMarket</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .add-listing-page {
+            min-height: calc(100vh - 72px);
+            padding: 55px 5%;
+            background: #f7f9fc;
+        }
+
+        .add-listing-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .add-listing-header {
+            margin-bottom: 30px;
+        }
+
+        .add-listing-header h1 {
+            font-size: 36px;
+            color: #111827;
+            margin-bottom: 7px;
+        }
+
+        .add-listing-header p {
+            color: #667085;
+        }
+
+        .listing-form-card {
+            background: #ffffff;
+            border: 1px solid #e2e7ee;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(31, 41, 55, 0.05);
+        }
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-section h2 {
+            font-size: 20px;
+            color: #111827;
+            margin-bottom: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        /* IMAGE UPLOAD */
+
+        .image-upload {
+            border: 2px dashed #cfd6e1;
+            border-radius: 10px;
+            padding: 35px 20px;
+            text-align: center;
+            background: #f8fafc;
+            transition: 0.2s ease;
+        }
+
+        .image-upload:hover {
+            border-color: #1d4ed8;
+            background: #eef4ff;
+        }
+
+        .image-upload-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .image-upload h3 {
+            color: #111827;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .image-upload p {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .image-upload input {
+            display: none;
+        }
+
+        .upload-button {
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid #1d4ed8;
+            color: #1d4ed8;
+            padding: 9px 16px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .upload-button:hover {
+            background: #eef4ff;
+        }
+
+        /* IMAGE PREVIEW */
+
+        .image-preview {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 10px;
+            object-fit: contain;
+            border: 1px solid #e2e7ee;
+        }
+
+        .verification-box {
+            background: #eef4ff;
+            border: 1px solid #cbdafc;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .verification-box h3 {
+            color: #1d4ed8;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .verification-box p {
+            color: #4d5870;
+            font-size: 13px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding-top: 25px;
+            border-top: 1px solid #edf0f4;
+        }
+
+        .cancel-button {
+            border: 1px solid #d9dee7;
+            background: #ffffff;
+            color: #374151;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .cancel-button:hover {
+            background: #f7f9fc;
+        }
+
+        .publish-button {
+            border: none;
+            background: #1d4ed8;
+            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .publish-button:hover {
+            background: #153eaa;
+        }
+
+        @media (max-width: 650px) {
+
+            .add-listing-page {
+                padding: 40px 18px;
+            }
+
+            .listing-form-card {
+                padding: 25px 20px;
+            }
+
+            .add-listing-header h1 {
+                font-size: 29px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .cancel-button,
+            .publish-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Edu<span>Market</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="marketplace.html">Marketplace</a>
+
+        <a href="marketplace.html">Services</a>
+
+        <a href="marketplace.html">Opportunities</a>
+
+        <a href="marketplace.html">CampusRide</a>
+
+        <a href="seller-dashboard.html" class="active">
+            Dashboard
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+        <a href="register.html" class="register-button">
+            Register
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="add-listing-page">
+
+    <div class="add-listing-container">
+
+        <div class="add-listing-header">
+
+            <h1>Add New Listing</h1>
+
+            <p>
+                Create a listing and connect with students across the Eduvos community.
+            </p>
+
+        </div>
+
+
+        <form class="listing-form-card" id="listingForm">
+
+
+            <!-- BASIC INFORMATION -->
+
+            <section class="form-section">
+
+                <h2>Basic Information</h2>
+
+                <div class="form-group">
+
+                    <label for="listingTitle">
+                        Listing Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="listingTitle"
+                        placeholder="e.g. Java Programming Tutoring"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="listingCategory">
+                            Category
+                        </label>
+
+                        <select id="listingCategory" required>
+
+                            <option value="">
+                                Select a category
+                            </option>
+
+                            <option value="textbooks">
+                                Textbooks
+                            </option>
+
+                            <option value="technology">
+                                Technology
+                            </option>
+
+                            <option value="tutoring">
+                                Tutoring
+                            </option>
+
+                            <option value="services">
+                                Services
+                            </option>
+
+                            <option value="campusride">
+                                CampusRide
+                            </option>
+
+                            <option value="accommodation">
+                                Accommodation
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="listingType">
+                            Listing Type
+                        </label>
+
+                        <select id="listingType" required>
+
+                            <option value="">
+                                Select type
+                            </option>
+
+                            <option value="product">
+                                Product
+                            </option>
+
+                            <option value="service">
+                                Service
+                            </option>
+
+                            <option value="request">
+                                Student Request
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRICE AND LOCATION -->
+
+            <section class="form-section">
+
+                <h2>Price & Location</h2>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="listingPrice">
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="listingPrice"
+                            min="0"
+                            step="0.01"
+                            placeholder="e.g. 450"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="priceType">
+                            Price Type
+                        </label>
+
+                        <select id="priceType" required>
+
+                            <option value="">
+                                Select price type
+                            </option>
+
+                            <option value="once">
+                                Once-off
+                            </option>
+
+                            <option value="hour">
+                                Per Hour
+                            </option>
+
+                            <option value="day">
+                                Per Day
+                            </option>
+
+                            <option value="month">
+                                Per Month
+                            </option>
+
+                            <option value="from">
+                                Starting From
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="listingLocation">
+                        Campus / Location
+                    </label>
+
+                    <select id="listingLocation" required>
+
+                        <option value="">
+                            Select location
+                        </option>
+
+                        <option value="Pretoria">
+                            Pretoria
+                        </option>
+
+                        <option value="Cape Town">
+                            Cape Town
+                        </option>
+
+                        <option value="Midrand">
+                            Midrand
+                        </option>
+
+                        <option value="Johannesburg">
+                            Johannesburg
+                        </option>
+
+                        <option value="Durban">
+                            Durban
+                        </option>
+
+                        <option value="Online">
+                            Online
+                        </option>
+
+                        <option value="Other">
+                            Other Eduvos Campus
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- DESCRIPTION -->
+
+            <section class="form-section">
+
+                <h2>Description</h2>
+
+                <div class="form-group">
+
+                    <label for="listingDescription">
+                        Tell students about your listing
+                    </label>
+
+                    <textarea
+                        id="listingDescription"
+                        placeholder="Describe your product or service, condition, features, availability, delivery options, etc."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </section>
+
+
+            <!-- IMAGE -->
+
+            <section class="form-section">
+
+                <h2>Listing Image</h2>
+
+                <div class="image-upload">
+
+                    <div class="image-upload-icon">
+                        📷
+                    </div>
+
+                    <h3>
+                        Add an image
+                    </h3>
+
+                    <p>
+                        Upload a clear image of your product or service.
+                    </p>
+
+                    <label
+                        for="listingImage"
+                        class="upload-button"
+                    >
+                        Choose Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="listingImage"
+                        accept="image/*"
+                        onchange="showImagePreview()"
+                    >
+
+                    <p id="imageName"></p>
+
+                    <div
+                        class="image-preview"
+                        id="imagePreview"
+                    >
+
+                        <img
+                            id="previewImage"
+                            src=""
+                            alt="Listing image preview"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- VERIFICATION -->
+
+            <section class="form-section">
+
+                <div class="verification-box">
+
+                    <h3>
+                        ✓ Eduvos Student Verification
+                    </h3>
+
+                    <p>
+                        Your listing will be connected to your EduMarket
+                        student profile. Verification helps students identify
+                        trusted members of the Eduvos community.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="cancelListing()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="publish-button"
+                >
+                    Publish Listing
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================
+       IMAGE PREVIEW
+       ========================================= */
+
+    function showImagePreview() {
+
+        const input =
+            document.getElementById("listingImage");
+
+        const imageName =
+            document.getElementById("imageName");
+
+        const preview =
+            document.getElementById("imagePreview");
+
+        const previewImage =
+            document.getElementById("previewImage");
+
+
+        if (input.files.length > 0) {
+
+            const file = input.files[0];
+
+            imageName.textContent =
+                "Selected: " + file.name;
+
+
+            const reader = new FileReader();
+
+
+            reader.onload = function(event) {
+
+                previewImage.src =
+                    event.target.result;
+
+                preview.style.display =
+                    "block";
+
+            };
+
+
+            reader.readAsDataURL(file);
+
+        } else {
+
+            imageName.textContent = "";
+
+            preview.style.display =
+                "none";
+
+            previewImage.src = "";
+
+        }
+
+    }
+
+
+    /* =========================================
+       SAVE LISTING
+       ========================================= */
+
+    document
+        .getElementById("listingForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const imageInput =
+                document.getElementById("listingImage");
+
+
+            /*
+             * Function to save the listing
+             * after the image has been converted.
+             */
+
+            function saveListing(imageData) {
+
+                const listing = {
+
+                    id: Date.now(),
+
+                    title:
+                        document
+                            .getElementById("listingTitle")
+                            .value
+                            .trim(),
+
+                    category:
+                        document
+                            .getElementById("listingCategory")
+                            .value,
+
+                    type:
+                        document
+                            .getElementById("listingType")
+                            .value,
+
+                    price:
+                        document
+                            .getElementById("listingPrice")
+                            .value,
+
+                    priceType:
+                        document
+                            .getElementById("priceType")
+                            .value,
+
+                    location:
+                        document
+                            .getElementById("listingLocation")
+                            .value,
+
+                    description:
+                        document
+                            .getElementById("listingDescription")
+                            .value
+                            .trim(),
+
+                    seller:
+                        "Student Seller",
+
+                    rating:
+                        "New",
+
+                    image:
+                        imageData || "",
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                const existingListings =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "eduMarketListings"
+                        )
+                    ) || [];
+
+
+                existingListings.push(listing);
+
+
+                localStorage.setItem(
+                    "eduMarketListings",
+                    JSON.stringify(
+                        existingListings
+                    )
+                );
+
+
+                window.location.href =
+                    "marketplace.html?newListing=true";
+
+            }
+
+
+            /*
+             * If an image was selected,
+             * convert it to Base64 first.
+             */
+
+            if (imageInput.files.length > 0) {
+
+                const file =
+                    imageInput.files[0];
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload = function(event) {
+
+                    saveListing(
+                        event.target.result
+                    );
+
+                };
+
+
+                reader.readAsDataURL(file);
+
+            } else {
+
+                saveListing("");
+
+            }
+
+        });
+
+
+    /* =========================================
+       CANCEL
+       ========================================= */
+
+    function cancelListing() {
+
+        window.location.href =
+            "seller-dashboard.html";
+
+    }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1825 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMarket | Student Marketplace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================
+           EDUVOS BRANDING
+           ========================================= */
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .eduvos-logo {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 650px) {
+
+            .brand-wrapper {
+                gap: 8px;
+            }
+
+            .eduvos-logo {
+                height: 60px;
+            }
+
+        }
+
+
+        /* =========================================
+           PRODUCT IMAGES
+           ========================================= */
+
+        .product-image {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .listing-uploaded-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* =========================================
+           PRODUCT MODAL
+           ========================================= */
+
+        .product-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+        .product-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            animation: modalAppear 0.25s ease;
+        }
+
+        @keyframes modalAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #f1f3f5;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e2e6ea;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding-right: 45px;
+            margin-bottom: 25px;
+        }
+
+        .modal-badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #198754;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .modal-header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .modal-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f7f9fb;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .modal-detail-item > span {
+            font-size: 22px;
+        }
+
+        .modal-detail-item small {
+            display: block;
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        .modal-detail-item strong {
+            display: block;
+            color: #222;
+            font-size: 14px;
+        }
+
+        .modal-description {
+            margin-bottom: 25px;
+        }
+
+        .modal-description h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #222;
+        }
+
+        .modal-description p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-seller-btn,
+        .wishlist-btn {
+            flex: 1;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .contact-seller-btn {
+            background: #111827;
+            color: white;
+        }
+
+        .contact-seller-btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        .wishlist-btn {
+            background: #f1f3f5;
+            color: #333;
+        }
+
+        .wishlist-btn:hover {
+            background: #e2e6ea;
+            transform: translateY(-2px);
+        }
+
+        .wishlist-btn.saved {
+            background: #ffe5e5;
+            color: #d6336c;
+        }
+
+        .new-listing-badge {
+            display: inline-block;
+            background: #111827;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE MODAL
+           ========================================= */
+
+        @media (max-width: 600px) {
+
+            .product-modal-content {
+                padding: 25px 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 22px;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
+
+<header class="navbar">
+
+    <div class="brand-wrapper">
+
+        <div class="logo">
+            <a href="index.html">EduMarket</a>
+        </div>
+
+        <img
+            src="images/eduvos.png"
+            alt="Eduvos Logo"
+            class="eduvos-logo"
+        >
+
+    </div>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="marketplace.html" class="active">
+            Marketplace
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="marketplace.html">
+            Opportunities
+        </a>
+
+        <a href="campusride.html">
+            CampusRide
+        </a>
+
+        <a href="seller-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="wallet.html">
+            Wallet
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+        <a href="register.html" class="register-button">
+            Register
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================
+     MARKETPLACE HEADER
+     ========================================= -->
+
+<section class="marketplace-header">
+
+    <div class="marketplace-header-content">
+
+        <p class="eyebrow">
+            EDUVOS STUDENT MARKETPLACE
+        </p>
+
+        <h1>
+            Everything Student.<br>
+            One Marketplace.
+        </h1>
+
+        <p>
+            Discover products, services, opportunities and student
+            businesses across the Eduvos community.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SEARCH
+     ========================================= -->
+
+<section class="marketplace-search-section">
+
+    <div class="marketplace-search">
+
+        <input
+            type="text"
+            id="marketplaceSearch"
+            placeholder="Search textbooks, tutoring, services..."
+        >
+
+        <button
+            id="searchButton"
+            onclick="searchMarketplace()"
+        >
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     CATEGORIES
+     ========================================= -->
+
+<section class="marketplace-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                EXPLORE
+            </p>
+
+            <h2>
+                Browse Categories
+            </h2>
+
+        </div>
+
+        <p>
+            Find exactly what you're looking for from fellow students.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div
+            class="category-card"
+            data-category="textbooks"
+            onclick="filterCategory('textbooks')"
+        >
+
+            <div class="category-icon">
+                📚
+            </div>
+
+            <h3>
+                Textbooks
+            </h3>
+
+            <p>
+                Buy and sell study material.
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            data-category="technology"
+            onclick="filterCategory('technology')"
+        >
+
+            <div class="category-icon">
+                💻
+            </div>
+
+            <h3>
+                Technology
+            </h3>
+
+            <p>
+                Student tech and accessories.
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            data-category="tutoring"
+            onclick="filterCategory('tutoring')"
+        >
+
+            <div class="category-icon">
+                🎓
+            </div>
+
+            <h3>
+                Tutoring
+            </h3>
+
+            <p>
+                Learn from fellow students.
+            </p>
+
+        </div>
+
+
+        <!-- FIXED SERVICES CATEGORY -->
+
+        <div
+            class="category-card"
+            data-category="services"
+            onclick="window.location.href='services.html'"
+        >
+
+            <div class="category-icon">
+                🛠️
+            </div>
+
+            <h3>
+                Services
+            </h3>
+
+            <p>
+                Student skills and businesses.
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            data-category="campusride"
+            onclick="window.location.href='campusride.html'"
+        >
+
+            <div class="category-icon">
+                🚗
+            </div>
+
+            <h3>
+                CampusRide
+            </h3>
+
+            <p>
+                Connect with students travelling.
+            </p>
+
+        </div>
+
+
+        <div
+            class="category-card"
+            data-category="accommodation"
+            onclick="filterCategory('accommodation')"
+        >
+
+            <div class="category-icon">
+                🏠
+            </div>
+
+            <h3>
+                Accommodation
+            </h3>
+
+            <p>
+                Find student accommodation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STUDENT LISTINGS
+     ========================================= -->
+
+<section
+    class="marketplace-section"
+    id="productGrid"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                STUDENT LISTINGS
+            </p>
+
+            <h2>
+                Trending on Campus
+            </h2>
+
+        </div>
+
+        <p>
+            Discover what students are buying and selling right now.
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div
+            class="product-card"
+            data-category="textbooks"
+            data-product="Programming Fundamentals Textbook"
+            data-seller="Kabelo M."
+            data-price="R450"
+            data-rating="4.8"
+            data-location="Pretoria"
+            data-description="Programming Fundamentals textbook in excellent condition. Perfect for students studying introductory programming and software development modules."
+        >
+
+            <div class="product-image">
+                📚
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    TEXTBOOKS
+                </span>
+
+                <h3>
+                    Programming Fundamentals Textbook
+                </h3>
+
+                <p class="product-seller">
+                    👤 Kabelo M.
+                </p>
+
+                <p class="product-location">
+                    📍 Pretoria
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>
+                        R450
+                    </strong>
+
+                    <span class="product-rating">
+                        ⭐ 4.8
+                    </span>
+
+                </div>
+
+                <button
+                    class="view-details-btn"
+                    onclick="openProductModal(this)"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div
+            class="product-card"
+            data-category="technology"
+            data-product="Wireless Keyboard & Mouse"
+            data-seller="Liam P."
+            data-price="R350"
+            data-rating="4.6"
+            data-location="Midrand"
+            data-description="Wireless keyboard and mouse combo suitable for laptops, desktop computers and student study setups. Clean, lightly used and ready to go."
+        >
+
+            <div class="product-image">
+                ⌨️
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    TECHNOLOGY
+                </span>
+
+                <h3>
+                    Wireless Keyboard & Mouse
+                </h3>
+
+                <p class="product-seller">
+                    👤 Liam P.
+                </p>
+
+                <p class="product-location">
+                    📍 Midrand
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>
+                        R350
+                    </strong>
+
+                    <span class="product-rating">
+                        ⭐ 4.6
+                    </span>
+
+                </div>
+
+                <button
+                    class="view-details-btn"
+                    onclick="openProductModal(this)"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div
+            class="product-card"
+            data-category="tutoring"
+            data-product="Java Programming Tutoring"
+            data-seller="Naledi K."
+            data-price="R120/hour"
+            data-rating="4.9"
+            data-location="Online"
+            data-description="One-on-one Java programming tutoring for students who need help understanding programming concepts, object-oriented programming and practical development."
+        >
+
+            <div class="product-image">
+                👩‍💻
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    TUTORING
+                </span>
+
+                <h3>
+                    Java Programming Tutoring
+                </h3>
+
+                <p class="product-seller">
+                    👤 Naledi K.
+                </p>
+
+                <p class="product-location">
+                    🌐 Online
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>
+                        R120/hour
+                    </strong>
+
+                    <span class="product-rating">
+                        ⭐ 4.9
+                    </span>
+
+                </div>
+
+                <button
+                    class="view-details-btn"
+                    onclick="openProductModal(this)"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div
+            class="product-card"
+            data-category="services"
+            data-product="Website Development"
+            data-seller="Student Seller"
+            data-price="From R650"
+            data-rating="5.0"
+            data-location="Pretoria"
+            data-description="Custom websites for student entrepreneurs and small businesses. Includes modern responsive design and a professional user experience."
+        >
+
+            <div class="product-image">
+                🌐
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    SERVICES
+                </span>
+
+                <h3>
+                    Website Development
+                </h3>
+
+                <p class="product-seller">
+                    👤 Student Seller
+                </p>
+
+                <p class="product-location">
+                    📍 Pretoria
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>
+                        From R650
+                    </strong>
+
+                    <span class="product-rating">
+                        ⭐ 5.0
+                    </span>
+
+                </div>
+
+                <button
+                    class="view-details-btn"
+                    onclick="openProductModal(this)"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+
+    <div
+        id="noResults"
+        style="display: none; text-align: center; padding: 40px;"
+    >
+
+        <h3>
+            No listings found
+        </h3>
+
+        <p>
+            Try searching for something else.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     OPPORTUNITY BOARD
+     ========================================= -->
+
+<section class="marketplace-section">
+
+    <div class="opportunity-banner">
+
+        <div>
+
+            <span class="product-category">
+                OPPORTUNITY BOARD
+            </span>
+
+            <h2>
+                Students need skills. You have them.
+            </h2>
+
+            <p>
+                Find students looking for websites, tutoring,
+                design, photography, transport and more.
+            </p>
+
+        </div>
+
+
+        <div class="opportunity-example">
+
+            <p>
+                💡 I need a website for my small business
+            </p>
+
+            <strong>
+                Budget: R2,500
+            </strong>
+
+            <span>
+                📍 Pretoria &nbsp; • &nbsp; Deadline: 30 Sep
+            </span>
+
+            <button onclick="showOpportunityMessage()">
+                View Opportunity
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SELLER CTA
+     ========================================= -->
+
+<section class="marketplace-cta">
+
+    <div>
+
+        <p class="eyebrow">
+            SELL ON EDUMARKET
+        </p>
+
+        <h2>
+            Your skills have value.
+        </h2>
+
+        <p>
+            Turn your skills, products and services into
+            opportunities while connecting with students
+            across Eduvos.
+        </p>
+
+    </div>
+
+
+    <a
+        href="register.html"
+        class="cta-button"
+    >
+        Become a Seller
+    </a>
+
+</section>
+
+
+<!-- =========================================
+     PRODUCT DETAILS MODAL
+     ========================================= -->
+
+<div
+    id="productModal"
+    class="product-modal"
+    onclick="closeModalOutside(event)"
+>
+
+    <div
+        class="product-modal-content"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="modal-close"
+            onclick="closeProductModal()"
+        >
+            &times;
+        </button>
+
+
+        <div class="modal-header">
+
+            <span class="modal-badge">
+                ✓ EDUVOS VERIFIED
+            </span>
+
+            <h2 id="modalProductName">
+                Product Name
+            </h2>
+
+            <p id="modalSeller">
+                Seller Name
+            </p>
+
+        </div>
+
+
+        <div class="modal-details">
+
+            <div class="modal-detail-item">
+
+                <span>
+                    💰
+                </span>
+
+                <div>
+
+                    <small>
+                        Price
+                    </small>
+
+                    <strong id="modalPrice">
+                        R0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-detail-item">
+
+                <span>
+                    ⭐
+                </span>
+
+                <div>
+
+                    <small>
+                        Rating
+                    </small>
+
+                    <strong id="modalRating">
+                        5.0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-detail-item">
+
+                <span>
+                    📍
+                </span>
+
+                <div>
+
+                    <small>
+                        Location
+                    </small>
+
+                    <strong id="modalLocation">
+                        Pretoria
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-description">
+
+            <h3>
+                About this listing
+            </h3>
+
+            <p id="modalDescription">
+                Product description will appear here.
+            </p>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="contact-seller-btn"
+                onclick="contactSeller()"
+            >
+                💬 Contact Seller
+            </button>
+
+
+            <button
+                id="wishlistButton"
+                class="wishlist-btn"
+                onclick="addToWishlist()"
+            >
+                ♡ Add to Wishlist
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                EduMarket
+            </h3>
+
+            <p>
+                Built by Students. Backed by Campus.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <p>
+                © 2026 EduMarket
+            </p>
+
+            <p>
+                Eduvos Student Marketplace
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script>
+
+    const searchInput =
+        document.getElementById("marketplaceSearch");
+
+    const noResults =
+        document.getElementById("noResults");
+
+    const productGrid =
+        document.querySelector(".product-grid");
+
+
+    function getCategoryIcon(category) {
+
+        const icons = {
+
+            textbooks: "📚",
+            technology: "💻",
+            tutoring: "🎓",
+            services: "🛠️",
+            campusride: "🚗",
+            accommodation: "🏠"
+
+        };
+
+        return icons[category] || "📦";
+
+    }
+
+
+    function getPriceText(listing) {
+
+        const price =
+            Number(listing.price || 0)
+                .toFixed(2)
+                .replace(".00", "");
+
+
+        if (listing.priceType === "hour") {
+            return "R" + price + "/hour";
+        }
+
+        if (listing.priceType === "day") {
+            return "R" + price + "/day";
+        }
+
+        if (listing.priceType === "month") {
+            return "R" + price + "/month";
+        }
+
+        if (listing.priceType === "from") {
+            return "From R" + price;
+        }
+
+        return "R" + price;
+
+    }
+
+
+    function escapeHtml(value) {
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    function loadSavedListings() {
+
+        let savedListings = [];
+
+
+        try {
+
+            savedListings =
+                JSON.parse(
+                    localStorage.getItem(
+                        "eduMarketListings"
+                    )
+                ) || [];
+
+        } catch (error) {
+
+            console.error(
+                "Could not load saved listings:",
+                error
+            );
+
+            savedListings = [];
+
+        }
+
+
+        savedListings
+            .slice()
+            .reverse()
+            .forEach(function(listing) {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "product-card";
+
+
+                card.setAttribute(
+                    "data-category",
+                    listing.category || ""
+                );
+
+
+                card.setAttribute(
+                    "data-product",
+                    listing.title || "Untitled Listing"
+                );
+
+
+                card.setAttribute(
+                    "data-seller",
+                    listing.seller || "Student Seller"
+                );
+
+
+                card.setAttribute(
+                    "data-price",
+                    getPriceText(listing)
+                );
+
+
+                card.setAttribute(
+                    "data-rating",
+                    listing.rating || "New"
+                );
+
+
+                card.setAttribute(
+                    "data-location",
+                    listing.location || "Eduvos"
+                );
+
+
+                card.setAttribute(
+                    "data-description",
+                    listing.description || ""
+                );
+
+
+                const category =
+                    listing.category || "services";
+
+
+                const categoryName =
+                    category.toUpperCase();
+
+
+                const title =
+                    escapeHtml(
+                        listing.title ||
+                        "Untitled Listing"
+                    );
+
+
+                const seller =
+                    escapeHtml(
+                        listing.seller ||
+                        "Student Seller"
+                    );
+
+
+                const location =
+                    escapeHtml(
+                        listing.location ||
+                        "Eduvos"
+                    );
+
+
+                const description =
+                    escapeHtml(
+                        listing.description ||
+                        "No description provided."
+                    );
+
+
+                const price =
+                    getPriceText(listing);
+
+
+                const rating =
+                    escapeHtml(
+                        listing.rating || "New"
+                    );
+
+
+                const imageHtml =
+                    listing.image
+                        ? `<img
+                            src="${listing.image}"
+                            alt="${title}"
+                            class="listing-uploaded-image"
+                          >`
+                        : getCategoryIcon(category);
+
+
+                card.innerHTML = `
+
+                    <div class="product-image">
+
+                        ${imageHtml}
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="new-listing-badge">
+                            NEW LISTING
+                        </span>
+
+                        <span class="product-category">
+                            ${categoryName}
+                        </span>
+
+                        <h3>
+                            ${title}
+                        </h3>
+
+                        <p class="product-seller">
+                            👤 ${seller}
+                        </p>
+
+                        <p class="product-location">
+                            📍 ${location}
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ${price}
+                            </strong>
+
+                            <span class="product-rating">
+                                ⭐ ${rating}
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="view-details-btn"
+                            onclick="openProductModal(this)"
+                        >
+                            View Details
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                productGrid.insertBefore(
+                    card,
+                    productGrid.firstChild
+                );
+
+            });
+
+    }
+
+
+    loadSavedListings();
+
+
+    function getProductCards() {
+
+        return document.querySelectorAll(
+            ".product-card"
+        );
+
+    }
+
+
+    function searchMarketplace() {
+
+        const searchTerm =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+
+        const productCards =
+            getProductCards();
+
+
+        let visibleProducts = 0;
+
+
+        productCards.forEach(function(card) {
+
+            const cardText =
+                card.innerText.toLowerCase();
+
+
+            if (
+                searchTerm === "" ||
+                cardText.includes(searchTerm)
+            ) {
+
+                card.style.display = "";
+
+                visibleProducts++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        noResults.style.display =
+            visibleProducts === 0
+                ? "block"
+                : "none";
+
+
+        document
+            .getElementById("productGrid")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+    }
+
+
+    searchInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                searchMarketplace();
+
+            }
+
+        }
+    );
+
+
+    function filterCategory(category) {
+
+        const productCards =
+            getProductCards();
+
+
+        let visibleProducts = 0;
+
+
+        productCards.forEach(function(card) {
+
+            const productCategory =
+                card.getAttribute(
+                    "data-category"
+                );
+
+
+            if (
+                productCategory === category
+            ) {
+
+                card.style.display = "";
+
+                visibleProducts++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        noResults.style.display =
+            visibleProducts === 0
+                ? "block"
+                : "none";
+
+
+        searchInput.value =
+            category
+                .charAt(0)
+                .toUpperCase()
+            + category.slice(1);
+
+
+        document
+            .getElementById("productGrid")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+    }
+
+
+    let currentProduct = null;
+
+
+    function openProductModal(button) {
+
+        const card =
+            button.closest(
+                ".product-card"
+            );
+
+
+        if (!card) {
+            return;
+        }
+
+
+        currentProduct = card;
+
+
+        const productName =
+            card.getAttribute(
+                "data-product"
+            );
+
+
+        const seller =
+            card.getAttribute(
+                "data-seller"
+            );
+
+
+        const price =
+            card.getAttribute(
+                "data-price"
+            );
+
+
+        const rating =
+            card.getAttribute(
+                "data-rating"
+            );
+
+
+        const location =
+            card.getAttribute(
+                "data-location"
+            );
+
+
+        const description =
+            card.getAttribute(
+                "data-description"
+            );
+
+
+        document.getElementById(
+            "modalProductName"
+        ).textContent =
+            productName;
+
+
+        document.getElementById(
+            "modalSeller"
+        ).textContent =
+            "Sold by " + seller;
+
+
+        document.getElementById(
+            "modalPrice"
+        ).textContent =
+            price;
+
+
+        document.getElementById(
+            "modalRating"
+        ).textContent =
+            rating === "New"
+                ? "New"
+                : "⭐ " + rating;
+
+
+        document.getElementById(
+            "modalLocation"
+        ).textContent =
+            location;
+
+
+        document.getElementById(
+            "modalDescription"
+        ).textContent =
+            description;
+
+
+        const wishlistButton =
+            document.getElementById(
+                "wishlistButton"
+            );
+
+
+        wishlistButton.classList.remove(
+            "saved"
+        );
+
+
+        wishlistButton.innerHTML =
+            "♡ Add to Wishlist";
+
+
+        document
+            .getElementById("productModal")
+            .classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    function closeProductModal() {
+
+        document
+            .getElementById("productModal")
+            .classList.remove("active");
+
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    function closeModalOutside(event) {
+
+        if (
+            event.target.id ===
+            "productModal"
+        ) {
+
+            closeProductModal();
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeProductModal();
+
+            }
+
+        }
+    );
+
+
+    function contactSeller() {
+
+        const seller =
+            currentProduct
+                ? currentProduct.getAttribute(
+                    "data-seller"
+                )
+                : "the seller";
+
+
+        alert(
+            "Message request sent to "
+            + seller
+            + ".\n\n"
+            + "Seller messaging will be connected "
+            + "in the next stage."
+        );
+
+    }
+
+
+    function addToWishlist() {
+
+        const button =
+            document.getElementById(
+                "wishlistButton"
+            );
+
+
+        if (
+            button.classList.contains(
+                "saved"
+            )
+        ) {
+
+            button.classList.remove(
+                "saved"
+            );
+
+
+            button.innerHTML =
+                "♡ Add to Wishlist";
+
+        } else {
+
+            button.classList.add(
+                "saved"
+            );
+
+
+            button.innerHTML =
+                "♥ Added to Wishlist";
+
+        }
+
+    }
+
+
+    function showOpportunityMessage() {
+
+        alert(
+            "Opportunity Board\n\n"
+            + "This student is looking for someone "
+            + "to build a website for their small business.\n\n"
+            + "Budget: R2,500\n"
+            + "Location: Pretoria\n"
+            + "Deadline: 30 September\n\n"
+            + "Opportunity submissions will be connected "
+            + "in the next stage."
+        );
+
+    }
+
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const homepageSearch =
+        urlParams.get("search");
+
+
+    if (homepageSearch) {
+
+        searchInput.value =
+            homepageSearch;
+
+        searchMarketplace();
+
+    }
+
+
+    if (
+        urlParams.get("newListing") === "true"
+    ) {
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+    }
+
+</script>
+
+
+</body>
+</html>
+```

@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMarket | Register</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================================
+           REGISTER PAGE
+           ========================================================= */
+
+        body.register-page {
+            margin: 0;
+            background: #f3f7fc;
+            color: #071b3a;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        .register-page .navbar {
+            position: relative;
+            z-index: 10;
+        }
+
+
+        /* =========================================================
+           MAIN REGISTER AREA
+           ========================================================= */
+
+        .register-main {
+            min-height: calc(100vh - 86px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 55px 6%;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(0, 169, 157, 0.12),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(23, 105, 170, 0.12),
+                    transparent 25%
+                ),
+                #f3f7fc;
+        }
+
+
+        /* =========================================================
+           REGISTER CONTAINER
+           ========================================================= */
+
+        .register-container {
+            width: 100%;
+            max-width: 1180px;
+            min-height: 700px;
+
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+
+            background: #ffffff;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(7, 27, 58, 0.15);
+
+            border: 1px solid rgba(7, 27, 58, 0.06);
+        }
+
+
+        /* =========================================================
+           LEFT BRAND PANEL
+           ========================================================= */
+
+        .register-brand-panel {
+            position: relative;
+            overflow: hidden;
+
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(0, 169, 157, 0.30),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(23, 105, 170, 0.35),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    145deg,
+                    #071b3a 0%,
+                    #0b2854 55%,
+                    #123f78 100%
+                );
+
+            color: #ffffff;
+        }
+
+
+        .register-brand-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            top: -140px;
+            right: -120px;
+        }
+
+
+        .register-brand-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(0, 169, 157, 0.18);
+
+            bottom: -120px;
+            left: -90px;
+        }
+
+
+        .register-brand-content,
+        .register-brand-bottom {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================================
+           EDUVOS LOGO
+           ========================================================= */
+
+        .register-brand-logo {
+            width: 150px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            margin-bottom: 30px;
+        }
+
+
+        .register-brand-logo img {
+            width: 150px;
+            max-height: 70px;
+
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================================================
+           BRAND TAG
+           ========================================================= */
+
+        .register-brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            width: fit-content;
+
+            padding: 8px 14px;
+
+            margin-bottom: 20px;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.09);
+
+            border: 1px solid rgba(255, 255, 255, 0.14);
+
+            color: #d9fffb;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           BRAND TITLE
+           ========================================================= */
+
+        .register-brand-title {
+            font-size: clamp(42px, 5vw, 66px);
+
+            line-height: 1.02;
+
+            letter-spacing: -2.5px;
+
+            margin: 0 0 18px;
+
+            font-weight: 900;
+        }
+
+
+        .register-brand-title span {
+            color: #00d1c1;
+        }
+
+
+        .register-brand-description {
+            max-width: 470px;
+
+            color: rgba(255, 255, 255, 0.78);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 0 0 35px;
+        }
+
+
+        /* =========================================================
+           BENEFIT CARDS
+           ========================================================= */
+
+        .register-features {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+
+            max-width: 500px;
+        }
+
+
+        .register-feature {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 15px 16px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 15px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .register-feature:hover {
+            background: rgba(255, 255, 255, 0.11);
+
+            transform: translateY(-2px);
+        }
+
+
+        .register-feature-icon {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(0, 169, 157, 0.18);
+
+            color: #7ff8ef;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+
+        .register-feature-text strong {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .register-feature-text span {
+            display: block;
+
+            color: rgba(255, 255, 255, 0.55);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           BRAND FOOTER
+           ========================================================= */
+
+        .register-brand-bottom {
+            margin-top: 45px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+
+        .register-brand-bottom p {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .register-brand-bottom strong {
+            color: #ffffff;
+        }
+
+
+        /* =========================================================
+           RIGHT REGISTER PANEL
+           ========================================================= */
+
+        .register-form-panel {
+            padding: 50px 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+        }
+
+
+        .register-form-wrapper {
+            width: 100%;
+
+            max-width: 425px;
+        }
+
+
+        /* =========================================================
+           FORM HEADER
+           ========================================================= */
+
+        .register-form-top {
+            margin-bottom: 27px;
+        }
+
+
+        .register-form-top .small-title {
+            display: inline-block;
+
+            margin: 0 0 10px;
+
+            color: #00a99d;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.8px;
+        }
+
+
+        .register-form-top h1 {
+            margin: 0 0 10px;
+
+            color: #071b3a;
+
+            font-size: 34px;
+
+            line-height: 1.15;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+
+        .register-form-top p {
+            margin: 0;
+
+            color: #6b7890;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           REGISTER FORM
+           ========================================================= */
+
+        .register-form .form-group {
+            margin-bottom: 16px;
+        }
+
+
+        .register-form label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #182b46;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .register-input-wrapper {
+            position: relative;
+        }
+
+
+        .register-input-icon {
+            position: absolute;
+
+            top: 50%;
+            left: 16px;
+
+            transform: translateY(-50%);
+
+            color: #8090a7;
+
+            font-size: 15px;
+
+            pointer-events: none;
+        }
+
+
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="password"] {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            height: 50px;
+
+            padding: 0 16px 0 45px;
+
+            border: 1.5px solid #dce4ef;
+
+            border-radius: 12px;
+
+            background: #f9fbfe;
+
+            color: #071b3a;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition: all 0.25s ease;
+        }
+
+
+        .register-form input::placeholder {
+            color: #a2adbd;
+        }
+
+
+        .register-form input[type="text"]:focus,
+        .register-form input[type="email"]:focus,
+        .register-form input[type="password"]:focus {
+            border-color: #00a99d;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px rgba(0, 169, 157, 0.10);
+        }
+
+
+        /* =========================================================
+           TERMS
+           ========================================================= */
+
+        .register-terms {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 9px;
+
+            margin: 4px 0 20px;
+
+            color: #68768c;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .register-terms input {
+            width: 16px;
+            height: 16px;
+
+            flex-shrink: 0;
+
+            margin-top: 1px;
+
+            accent-color: #00a99d;
+
+            cursor: pointer;
+        }
+
+
+        .register-terms label {
+            display: inline;
+
+            margin: 0;
+
+            color: #68768c;
+
+            font-weight: 600;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           REGISTER BUTTON
+           ========================================================= */
+
+        .register-submit {
+            width: 100%;
+
+            height: 54px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00a99d,
+                    #008f86
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 24px rgba(0, 169, 157, 0.22);
+
+            transition: all 0.25s ease;
+        }
+
+
+        .register-submit:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 30px rgba(0, 169, 157, 0.28);
+        }
+
+
+        .register-submit:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           MESSAGE
+           ========================================================= */
+
+        .register-message {
+            min-height: 20px;
+
+            margin: 12px 0 0;
+
+            color: #007f77;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           DIVIDER
+           ========================================================= */
+
+        .register-divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin: 21px 0 18px;
+
+            color: #a4afbd;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+
+        .register-divider::before,
+        .register-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #e7ecf3;
+        }
+
+
+        /* =========================================================
+           LOGIN LINK
+           ========================================================= */
+
+        .already-account {
+            margin: 0;
+
+            text-align: center;
+
+            color: #758197;
+
+            font-size: 13px;
+        }
+
+
+        .already-account a {
+            color: #007f77;
+
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+
+        .already-account a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .register-page footer {
+            padding: 28px 20px;
+
+            background: #071b3a;
+
+            color: rgba(255, 255, 255, 0.75);
+
+            text-align: center;
+        }
+
+
+        .register-page .footer-logo {
+            margin-bottom: 7px;
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            color: #ffffff;
+        }
+
+
+        .register-page .footer-logo span {
+            color: #00c8b8;
+        }
+
+
+        .register-page footer p {
+            margin: 4px 0;
+
+            font-size: 12px;
+        }
+
+
+        .register-page .copyright {
+            color: rgba(255, 255, 255, 0.40);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .register-main {
+                padding: 35px 4%;
+            }
+
+
+            .register-container {
+                grid-template-columns: 1fr;
+
+                max-width: 650px;
+            }
+
+
+            .register-brand-panel {
+                min-height: 430px;
+
+                padding: 40px;
+            }
+
+
+            .register-brand-title {
+                font-size: 48px;
+            }
+
+
+            .register-form-panel {
+                padding: 45px 40px;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .register-main {
+                padding: 20px 15px;
+            }
+
+
+            .register-container {
+                border-radius: 20px;
+            }
+
+
+            .register-brand-panel {
+                padding: 30px 25px;
+
+                min-height: auto;
+            }
+
+
+            .register-brand-logo {
+                width: 125px;
+
+                height: 55px;
+
+                margin-bottom: 22px;
+            }
+
+
+            .register-brand-logo img {
+                width: 125px;
+
+                max-height: 55px;
+            }
+
+
+            .register-brand-title {
+                font-size: 40px;
+
+                letter-spacing: -1.5px;
+            }
+
+
+            .register-brand-description {
+                font-size: 14px;
+            }
+
+
+            .register-features {
+                grid-template-columns: 1fr;
+            }
+
+
+            .register-brand-bottom {
+                margin-top: 25px;
+            }
+
+
+            .register-form-panel {
+                padding: 35px 25px;
+            }
+
+
+            .register-form-top h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="register-page">
+
+
+    <!-- =========================================================
+         NAVIGATION BAR
+         ========================================================= -->
+
+    <header class="navbar">
+
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Edu<span>Market</span>
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="marketplace.html">
+                Marketplace
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="opportunities.html">
+                Opportunities
+            </a>
+
+            <a href="campusride.html">
+                CampusRide
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="login.html"
+                class="login-btn"
+            >
+                Login
+            </a>
+
+
+            <a
+                href="register.html"
+                class="register-btn"
+            >
+                Register
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         REGISTER MAIN
+         ========================================================= -->
+
+    <main class="register-main">
+
+        <div class="register-container">
+
+
+            <!-- =================================================
+                 LEFT BRAND PANEL
+                 ================================================= -->
+
+            <section class="register-brand-panel">
+
+                <div class="register-brand-content">
+
+
+                    <!-- EDUVOS LOGO -->
+
+                    <div class="register-brand-logo">
+
+                        <img
+                            src="images/eduvos.png"
+                            alt="Eduvos Logo"
+                        >
+
+                    </div>
+
+
+                    <!-- BADGE -->
+
+                    <div class="register-brand-tag">
+
+                        ● Eduvos Student Marketplace
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <h2 class="register-brand-title">
+
+                        One account.<br>
+
+                        Your whole <span>campus.</span>
+
+                    </h2>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="register-brand-description">
+
+                        Create your EduMarket account and unlock
+                        a student-powered marketplace built around
+                        the Eduvos community.
+
+                    </p>
+
+
+                    <!-- FEATURES -->
+
+                    <div class="register-features">
+
+
+                        <!-- FEATURE 1 -->
+
+                        <div class="register-feature">
+
+                            <div class="register-feature-icon">
+                                ✓
+                            </div>
+
+
+                            <div class="register-feature-text">
+
+                                <strong>
+                                    Buy & Sell
+                                </strong>
+
+                                <span>
+                                    Trade with fellow students
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 2 -->
+
+                        <div class="register-feature">
+
+                            <div class="register-feature-icon">
+                                $
+                            </div>
+
+
+                            <div class="register-feature-text">
+
+                                <strong>
+                                    Earn From Skills
+                                </strong>
+
+                                <span>
+                                    Offer services on campus
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 3 -->
+
+                        <div class="register-feature">
+
+                            <div class="register-feature-icon">
+                                ↗
+                            </div>
+
+
+                            <div class="register-feature-text">
+
+                                <strong>
+                                    Find Opportunities
+                                </strong>
+
+                                <span>
+                                    Connect with student projects
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 4 -->
+
+                        <div class="register-feature">
+
+                            <div class="register-feature-icon">
+                                →
+                            </div>
+
+
+                            <div class="register-feature-text">
+
+                                <strong>
+                                    CampusRide
+                                </strong>
+
+                                <span>
+                                    Connect with student drivers
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BRAND FOOTER -->
+
+                <div class="register-brand-bottom">
+
+                    <p>
+
+                        <strong>
+                            Built by Students. Backed by Campus.
+                        </strong>
+
+                    </p>
+
+
+                    <p>
+                        EduMarket HackJam Prototype
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RIGHT REGISTER FORM
+                 ================================================= -->
+
+            <section class="register-form-panel">
+
+                <div class="register-form-wrapper">
+
+
+                    <!-- FORM HEADER -->
+
+                    <div class="register-form-top">
+
+                        <p class="small-title">
+                            JOIN EDUMARKET
+                        </p>
+
+
+                        <h1>
+                            Create Your Account
+                        </h1>
+
+
+                        <p>
+                            Join the student marketplace and
+                            connect with your campus community.
+                        </p>
+
+                    </div>
+
+
+                    <!-- REGISTER FORM -->
+
+                    <form
+                        id="registerForm"
+                        class="register-form"
+                    >
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+
+                            <div class="register-input-wrapper">
+
+                                <span class="register-input-icon">
+                                    ●
+                                </span>
+
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+
+                            <div class="register-input-wrapper">
+
+                                <span class="register-input-icon">
+                                    @
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- STUDENT NUMBER -->
+
+                        <div class="form-group">
+
+                            <label for="studentNumber">
+                                Student Number
+                            </label>
+
+
+                            <div class="register-input-wrapper">
+
+                                <span class="register-input-icon">
+                                    #
+                                </span>
+
+
+                                <input
+                                    type="text"
+                                    id="studentNumber"
+                                    placeholder="Enter your student number"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+
+                            <div class="register-input-wrapper">
+
+                                <span class="register-input-icon">
+                                    ●
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Create a password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="confirmPassword">
+                                Confirm Password
+                            </label>
+
+
+                            <div class="register-input-wrapper">
+
+                                <span class="register-input-icon">
+                                    ●
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    placeholder="Confirm your password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TERMS -->
+
+                        <div class="register-terms">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                            >
+
+
+                            <label for="terms">
+                                I agree to the EduMarket terms and
+                                understand that this prototype is
+                                intended for the Eduvos student community.
+                            </label>
+
+                        </div>
+
+
+                        <!-- REGISTER BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="register-submit"
+                        >
+                            Create My EduMarket Account
+                        </button>
+
+
+                        <!-- MESSAGE -->
+
+                        <p
+                            id="registerMessage"
+                            class="register-message"
+                        ></p>
+
+
+                    </form>
+
+
+                    <!-- DIVIDER -->
+
+                    <div class="register-divider">
+
+                        <span>
+                            OR
+                        </span>
+
+                    </div>
+
+
+                    <!-- LOGIN -->
+
+                    <p class="already-account">
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Login here
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer>
+
+
+        <div class="footer-logo">
+
+            Edu<span>Market</span>
+
+        </div>
+
+
+        <p>
+            Built by Students. Backed by Campus.
+        </p>
+
+
+        <p class="copyright">
+            © 2026 EduMarket. Student marketplace prototype.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         REGISTER JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        document
+            .getElementById("registerForm")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const fullName =
+                        document
+                            .getElementById("fullName")
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document
+                            .getElementById("email")
+                            .value
+                            .trim();
+
+
+                    const studentNumber =
+                        document
+                            .getElementById("studentNumber")
+                            .value
+                            .trim();
+
+
+                    const password =
+                        document
+                            .getElementById("password")
+                            .value;
+
+
+                    const confirmPassword =
+                        document
+                            .getElementById("confirmPassword")
+                            .value;
+
+
+                    const terms =
+                        document
+                            .getElementById("terms")
+                            .checked;
+
+
+                    const message =
+                        document
+                            .getElementById("registerMessage");
+
+
+                    /* CHECK EMPTY FIELDS */
+
+                    if (
+                        !fullName ||
+                        !email ||
+                        !studentNumber ||
+                        !password ||
+                        !confirmPassword
+                    ) {
+
+                        message.textContent =
+                            "Please complete all fields.";
+
+                        return;
+                    }
+
+
+                    /* CHECK PASSWORDS */
+
+                    if (
+                        password !== confirmPassword
+                    ) {
+
+                        message.textContent =
+                            "Passwords do not match.";
+
+                        return;
+                    }
+
+
+                    /* CHECK TERMS */
+
+                    if (!terms) {
+
+                        message.textContent =
+                            "Please agree to the terms.";
+
+                        return;
+                    }
+
+
+                    /* SUCCESS */
+
+                    message.textContent =
+                        "Account created successfully. Backend registration will be connected next.";
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

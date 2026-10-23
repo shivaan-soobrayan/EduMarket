@@ -1,0 +1,3481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMarket | Opportunities</title>
+
+    <style>
+        /* =========================================
+           EDUMARKET - OPPORTUNITIES
+           ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #1f2937;
+        }
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+
+        .navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 40px;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #2563eb;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-button,
+        .register-button {
+            padding: 9px 16px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .login-button {
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        .register-button {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* =========================================
+           EDUMARKET + EDUVOS BRANDING
+           ========================================= */
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .eduvos-logo {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        @media (max-width: 650px) {
+            .brand-wrapper {
+                gap: 8px;
+            }
+
+            .eduvos-logo {
+                height: 60px;
+            }
+        }
+
+        /* =========================================
+           HERO
+           ========================================= */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 70px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 17px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            padding: 13px 24px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .primary-hero-button {
+            background: white;
+            color: #2563eb;
+        }
+
+        .secondary-hero-button {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           ========================================= */
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 40px auto;
+        }
+
+        /* =========================================
+           FILTER BOX
+           ========================================= */
+
+        .filter-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            margin-bottom: 35px;
+        }
+
+        .filter-box h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #4b5563;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            border-color: #2563eb;
+        }
+
+        /* =========================================
+           SECTION HEADER
+           ========================================= */
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 25px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .opportunity-count {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .my-opportunities-button {
+            background: #111827;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .my-opportunities-button:hover {
+            background: #374151;
+        }
+
+        /* =========================================
+           OPPORTUNITY GRID
+           ========================================= */
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .opportunity-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            border: 1px solid #edf0f5;
+            transition: 0.2s;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+        }
+
+        .opportunity-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .opportunity-icon {
+            width: 48px;
+            height: 48px;
+            background: #eff6ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .category-badge {
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 6px 9px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .opportunity-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .opportunity-description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 63px;
+            margin-bottom: 15px;
+        }
+
+        .opportunity-info {
+            border-top: 1px solid #eef0f3;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: #6b7280;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .budget {
+            color: #16a34a;
+            font-size: 17px;
+        }
+
+        .opportunity-footer {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .posted-by {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .view-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            padding: 9px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .view-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================================
+           EMPTY STATE
+           ========================================= */
+
+        .empty-state {
+            background: white;
+            border-radius: 12px;
+            padding: 60px 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .empty-state-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #6b7280;
+        }
+
+        /* =========================================
+           MY OPPORTUNITIES
+           ========================================= */
+
+        .my-opportunity-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .my-opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .my-opportunity-header h3 {
+            margin-bottom: 7px;
+        }
+
+        .my-opportunity-description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .status-badge {
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .status-open {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-assigned {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .my-opportunity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .view-offers-button {
+            margin-top: 18px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .view-offers-button:hover {
+            background: #1d4ed8;
+        }
+
+        .accepted-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .back-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           MODAL
+           ========================================= */
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 14px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .modal h2 {
+            margin-bottom: 10px;
+            padding-right: 30px;
+        }
+
+        .modal-subtitle {
+            color: #6b7280;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-details {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 22px;
+        }
+
+        .modal-detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .modal-detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-detail-label {
+            color: #6b7280;
+        }
+
+        .modal-detail-value {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .offer-form {
+            margin-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+
+        .offer-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px;
+            background: #f9fafb;
+        }
+
+        .offer-card-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .offer-amount {
+            color: #16a34a;
+            font-size: 18px;
+        }
+
+        .offer-message {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .accept-offer-button {
+            width: 100%;
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 11px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accept-offer-button:hover {
+            background: #15803d;
+        }
+
+        .accepted-offer-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 10px;
+            border-radius: 7px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* =========================================
+           FORMS
+           ========================================= */
+
+        .post-form {
+            display: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 70px;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .opportunity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                height: auto;
+                padding: 18px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-buttons {
+                justify-content: center;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .my-opportunity-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
+
+<nav class="navbar">
+
+    <div class="brand-wrapper">
+
+        <a href="index.html" class="logo">
+            Edu<span>Market</span>
+        </a>
+
+        <img
+            src="images/eduvos.png"
+            alt="Eduvos Logo"
+            class="eduvos-logo"
+        >
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="marketplace.html">Marketplace</a>
+
+        <a href="services.html">Services</a>
+
+        <a href="opportunities.html" class="active">
+            Opportunities
+        </a>
+
+        <a href="campusride.html">CampusRide</a>
+
+        <a href="seller-dashboard.html">Dashboard</a>
+
+    </div>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="login-button">
+            Login
+        </a>
+
+        <a href="register.html" class="register-button">
+            Register
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+
+<section class="hero">
+
+    <h1>Student Opportunities</h1>
+
+    <p>
+        Need something done? Post an opportunity and connect
+        with talented Eduvos students who can help.
+    </p>
+
+    <div class="hero-buttons">
+
+        <button
+            class="hero-button primary-hero-button"
+            onclick="showOpportunities()">
+
+            🔎 Find Opportunities
+
+        </button>
+
+        <button
+            class="hero-button secondary-hero-button"
+            onclick="showPostForm()">
+
+            ➕ Post an Opportunity
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MAIN CONTENT
+     ========================================= -->
+
+<main class="container">
+
+    <!-- =====================================
+         AVAILABLE OPPORTUNITIES
+         ===================================== -->
+
+    <section id="opportunitySection">
+
+        <div class="filter-box">
+
+            <h2>Find an Opportunity</h2>
+
+            <div class="filter-row">
+
+                <div class="filter-group">
+
+                    <label for="searchInput">
+                        Search
+                    </label>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="e.g. logo, website, tutoring..."
+                        oninput="filterOpportunities()">
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="categoryFilter">
+                        Category
+                    </label>
+
+                    <select
+                        id="categoryFilter"
+                        onchange="filterOpportunities()">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="Graphic Design">
+                            Graphic Design
+                        </option>
+
+                        <option value="Tutoring">
+                            Tutoring
+                        </option>
+
+                        <option value="Photography">
+                            Photography
+                        </option>
+
+                        <option value="Video Editing">
+                            Video Editing
+                        </option>
+
+                        <option value="Academic Support">
+                            Academic Support
+                        </option>
+
+                        <option value="CV & LinkedIn">
+                            CV & LinkedIn
+                        </option>
+
+                        <option value="Technology">
+                            Technology
+                        </option>
+
+                        <option value="Events">
+                            Events
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="campusFilter">
+                        Campus
+                    </label>
+
+                    <select
+                        id="campusFilter"
+                        onchange="filterOpportunities()">
+
+                        <option value="all">
+                            All Campuses
+                        </option>
+
+                        <option value="Pretoria">
+                            Pretoria
+                        </option>
+
+                        <option value="Midrand">
+                            Midrand
+                        </option>
+
+                        <option value="Johannesburg">
+                            Johannesburg
+                        </option>
+
+                        <option value="Cape Town">
+                            Cape Town
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-header">
+
+            <h2>
+                Available Opportunities
+            </h2>
+
+            <div class="header-actions">
+
+                <button
+                    class="my-opportunities-button"
+                    onclick="showMyOpportunities()">
+
+                    📋 My Opportunities
+
+                </button>
+
+                <span
+                    class="opportunity-count"
+                    id="opportunityCount">
+
+                    0 Opportunities
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="opportunity-grid"
+            id="opportunityGrid">
+        </div>
+
+
+        <div
+            class="empty-state"
+            id="emptyState">
+
+            <div class="empty-state-icon">
+                🔍
+            </div>
+
+            <h3>
+                No opportunities found
+            </h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         MY OPPORTUNITIES
+         ===================================== -->
+
+    <section
+        id="myOpportunitiesSection"
+        style="display:none;">
+
+        <div class="filter-box">
+
+            <div class="section-header">
+
+                <h2>
+                    My Opportunities
+                </h2>
+
+                <button
+                    class="back-button"
+                    onclick="showOpportunities()">
+
+                    ← Back to Opportunities
+
+                </button>
+
+            </div>
+
+            <p style="color:#6b7280; margin-bottom:25px;">
+
+                Manage opportunities you have posted
+                and review student offers.
+
+            </p>
+
+            <div id="myOpportunitiesGrid"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         POST OPPORTUNITY
+         ===================================== -->
+
+    <section
+        id="postOpportunitySection"
+        class="post-form">
+
+        <div class="filter-box">
+
+            <h2>
+                Post a New Opportunity
+            </h2>
+
+            <p style="color:#6b7280; margin-bottom:25px;">
+
+                Tell other Eduvos students what you need help with.
+
+            </p>
+
+
+            <form onsubmit="postOpportunity(event)">
+
+                <div class="form-group">
+
+                    <label>
+                        Opportunity Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="opportunityTitle"
+                        placeholder="e.g. Need a logo for my clothing brand"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="opportunityDescription"
+                        placeholder="Explain what you need..."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Category
+                        </label>
+
+                        <select
+                            id="opportunityCategory"
+                            required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option>
+                                Web Development
+                            </option>
+
+                            <option>
+                                Graphic Design
+                            </option>
+
+                            <option>
+                                Tutoring
+                            </option>
+
+                            <option>
+                                Photography
+                            </option>
+
+                            <option>
+                                Video Editing
+                            </option>
+
+                            <option>
+                                Academic Support
+                            </option>
+
+                            <option>
+                                CV & LinkedIn
+                            </option>
+
+                            <option>
+                                Technology
+                            </option>
+
+                            <option>
+                                Events
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Campus
+                        </label>
+
+                        <select
+                            id="opportunityCampus"
+                            required>
+
+                            <option value="">
+                                Select Campus
+                            </option>
+
+                            <option>
+                                Pretoria
+                            </option>
+
+                            <option>
+                                Midrand
+                            </option>
+
+                            <option>
+                                Johannesburg
+                            </option>
+
+                            <option>
+                                Cape Town
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Budget (R)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="opportunityBudget"
+                            placeholder="500"
+                            min="0"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="opportunityDeadline"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="posterName"
+                        placeholder="e.g. Shivaan"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Contact
+                    </label>
+
+                    <input
+                        type="text"
+                        id="posterContact"
+                        placeholder="Email or phone number"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button">
+
+                    Post Opportunity
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     VIEW OPPORTUNITY MODAL
+     ========================================= -->
+
+<div
+    class="modal-overlay"
+    id="viewModal">
+
+    <div class="modal" id="modalContent">
+
+        <button
+            class="close-button"
+            onclick="closeModal()">
+
+            ×
+
+        </button>
+
+        <h2 id="modalTitle">
+            Opportunity
+        </h2>
+
+        <p
+            class="modal-subtitle"
+            id="modalDescription">
+        </p>
+
+
+        <div class="modal-details">
+
+            <div class="modal-detail-row">
+
+                <span class="modal-detail-label">
+                    Category
+                </span>
+
+                <span
+                    class="modal-detail-value"
+                    id="modalCategory">
+                </span>
+
+            </div>
+
+
+            <div class="modal-detail-row">
+
+                <span class="modal-detail-label">
+                    Campus
+                </span>
+
+                <span
+                    class="modal-detail-value"
+                    id="modalCampus">
+                </span>
+
+            </div>
+
+
+            <div class="modal-detail-row">
+
+                <span class="modal-detail-label">
+                    Budget
+                </span>
+
+                <span
+                    class="modal-detail-value"
+                    id="modalBudget">
+                </span>
+
+            </div>
+
+
+            <div class="modal-detail-row">
+
+                <span class="modal-detail-label">
+                    Deadline
+                </span>
+
+                <span
+                    class="modal-detail-value"
+                    id="modalDeadline">
+                </span>
+
+            </div>
+
+
+            <div class="modal-detail-row">
+
+                <span class="modal-detail-label">
+                    Posted By
+                </span>
+
+                <span
+                    class="modal-detail-value"
+                    id="modalPoster">
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             OFFER FORM
+             ================================= -->
+
+        <div class="offer-form">
+
+            <h3 style="margin-bottom:15px;">
+                Submit an Offer
+            </h3>
+
+            <form onsubmit="submitOffer(event)">
+
+                <div class="form-group">
+
+                    <label>
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="offerName"
+                        placeholder="Your name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Your Offer (R)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="offerAmount"
+                        min="0"
+                        placeholder="e.g. 400"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Message
+                    </label>
+
+                    <textarea
+                        id="offerMessage"
+                        placeholder="Explain how you can help..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button">
+
+                    Submit Offer
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 EduMarket — Built by Students. Backed by Campus.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================================
+       DEFAULT OPPORTUNITIES
+       ========================================= */
+
+    const defaultOpportunities = [
+
+        {
+            id: 1,
+            title: "Need a Logo for My Clothing Brand",
+            description:
+                "I am starting a small clothing brand and need a modern logo that I can use on Instagram and clothing.",
+            category: "Graphic Design",
+            campus: "Pretoria",
+            budget: 400,
+            deadline: "2026-10-05",
+            poster: "Kabelo M.",
+            contact: "kabelo@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 2,
+            title: "Website for Small Business",
+            description:
+                "Looking for a student developer to create a simple website for a small family business.",
+            category: "Web Development",
+            campus: "Pretoria",
+            budget: 1500,
+            deadline: "2026-10-15",
+            poster: "Liam P.",
+            contact: "liam@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 3,
+            title: "Java Programming Help",
+            description:
+                "Looking for someone who can help me understand Java classes, inheritance and object-oriented programming.",
+            category: "Tutoring",
+            campus: "Pretoria",
+            budget: 300,
+            deadline: "2026-09-30",
+            poster: "Thando N.",
+            contact: "thando@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 4,
+            title: "Graduation Photographer",
+            description:
+                "Looking for a student photographer to take professional graduation photos.",
+            category: "Photography",
+            campus: "Cape Town",
+            budget: 800,
+            deadline: "2026-11-20",
+            poster: "Naledi K.",
+            contact: "naledi@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 5,
+            title: "Edit My YouTube Video",
+            description:
+                "Need someone experienced with video editing to edit a 10-minute YouTube video.",
+            category: "Video Editing",
+            campus: "Midrand",
+            budget: 500,
+            deadline: "2026-10-08",
+            poster: "Jason R.",
+            contact: "jason@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 6,
+            title: "Help With Database Project",
+            description:
+                "Looking for help understanding SQL queries, joins and database design for a university project.",
+            category: "Academic Support",
+            campus: "Johannesburg",
+            budget: 350,
+            deadline: "2026-10-02",
+            poster: "Aisha S.",
+            contact: "aisha@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 7,
+            title: "CV and LinkedIn Makeover",
+            description:
+                "I need help improving my CV and setting up a professional LinkedIn profile.",
+            category: "CV & LinkedIn",
+            campus: "Pretoria",
+            budget: 250,
+            deadline: "2026-10-10",
+            poster: "Ryan D.",
+            contact: "ryan@student.eduvos.com",
+            status: "Open"
+        },
+
+        {
+            id: 8,
+            title: "Laptop Software Installation",
+            description:
+                "Need help setting up development software and configuring my laptop for programming.",
+            category: "Technology",
+            campus: "Pretoria",
+            budget: 200,
+            deadline: "2026-09-28",
+            poster: "Sade E.",
+            contact: "sade@student.eduvos.com",
+            status: "Open"
+        }
+
+    ];
+
+
+    /* =========================================
+       GET OPPORTUNITIES
+       ========================================= */
+
+    function getOpportunities() {
+
+        let stored =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketOpportunities"
+                )
+            );
+
+
+        if (!Array.isArray(stored)) {
+
+            stored = [...defaultOpportunities];
+
+            localStorage.setItem(
+                "eduMarketOpportunities",
+                JSON.stringify(stored)
+            );
+
+            return stored;
+        }
+
+
+        const existingIds =
+            new Set(
+                stored.map(function(opportunity) {
+
+                    return String(
+                        opportunity.id
+                    );
+
+                })
+            );
+
+
+        defaultOpportunities.forEach(
+            function(opportunity) {
+
+                if (
+                    !existingIds.has(
+                        String(opportunity.id)
+                    )
+                ) {
+
+                    stored.push(opportunity);
+
+                }
+
+            }
+        );
+
+
+        /*
+           Give older opportunities the
+           new Open status.
+        */
+
+        stored.forEach(function(opportunity) {
+
+            if (!opportunity.status) {
+
+                opportunity.status = "Open";
+
+            }
+
+        });
+
+
+        localStorage.setItem(
+            "eduMarketOpportunities",
+            JSON.stringify(stored)
+        );
+
+
+        return stored;
+    }
+
+
+    /* =========================================
+       ICONS
+       ========================================= */
+
+    function getOpportunityIcon(category) {
+
+        const icons = {
+
+            "Web Development": "💻",
+
+            "Graphic Design": "🎨",
+
+            "Tutoring": "📚",
+
+            "Photography": "📸",
+
+            "Video Editing": "🎬",
+
+            "Academic Support": "📝",
+
+            "CV & LinkedIn": "📄",
+
+            "Technology": "🛠️",
+
+            "Events": "🎉",
+
+            "Other": "💡"
+
+        };
+
+
+        return icons[category] || "💡";
+    }
+
+
+    /* =========================================
+       ESCAPE HTML
+       ========================================= */
+
+    function escapeHtml(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =========================================
+       FORMAT DATE
+       ========================================= */
+
+    function formatDate(date) {
+
+        if (!date) {
+
+            return "Not specified";
+
+        }
+
+
+        const d =
+            new Date(
+                date + "T00:00:00"
+            );
+
+
+        return d.toLocaleDateString(
+            "en-ZA",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+    }
+
+
+    /* =========================================
+       LOAD OPPORTUNITIES
+       ========================================= */
+
+    function loadOpportunities(list) {
+
+        const grid =
+            document.getElementById(
+                "opportunityGrid"
+            );
+
+
+        const emptyState =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        const count =
+            document.getElementById(
+                "opportunityCount"
+            );
+
+
+        grid.innerHTML = "";
+
+
+        count.textContent =
+            list.length +
+            (
+                list.length === 1
+                    ? " Opportunity"
+                    : " Opportunities"
+            );
+
+
+        if (list.length === 0) {
+
+            emptyState.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        emptyState.style.display =
+            "none";
+
+
+        list.forEach(function(opportunity) {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "opportunity-card";
+
+
+            const status =
+                opportunity.status ||
+                "Open";
+
+
+            card.innerHTML = `
+
+                <div class="opportunity-top">
+
+                    <div class="opportunity-icon">
+                        ${getOpportunityIcon(
+                            opportunity.category
+                        )}
+                    </div>
+
+                    <span class="category-badge">
+                        ${escapeHtml(
+                            opportunity.category
+                        )}
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    ${escapeHtml(
+                        opportunity.title
+                    )}
+                </h3>
+
+
+                <p class="opportunity-description">
+                    ${escapeHtml(
+                        opportunity.description
+                    )}
+                </p>
+
+
+                <div class="opportunity-info">
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Budget
+                        </span>
+
+                        <span class="info-value budget">
+                            R${Number(
+                                opportunity.budget
+                            ).toLocaleString("en-ZA")}
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Campus
+                        </span>
+
+                        <span class="info-value">
+                            ${escapeHtml(
+                                opportunity.campus
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Deadline
+                        </span>
+
+                        <span class="info-value">
+                            ${formatDate(
+                                opportunity.deadline
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="opportunity-footer">
+
+                    <span class="posted-by">
+                        Posted by
+                        ${escapeHtml(
+                            opportunity.poster
+                        )}
+                    </span>
+
+                    <button
+                        class="view-button"
+                        onclick="viewOpportunity(
+                            ${opportunity.id}
+                        )">
+
+                        View Opportunity
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================================
+       FILTER OPPORTUNITIES
+       ========================================= */
+
+    function filterOpportunities() {
+
+        const search =
+            document
+                .getElementById(
+                    "searchInput"
+                )
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const category =
+            document
+                .getElementById(
+                    "categoryFilter"
+                )
+                .value;
+
+
+        const campus =
+            document
+                .getElementById(
+                    "campusFilter"
+                )
+                .value;
+
+
+        const opportunities =
+            getOpportunities();
+
+
+        const filtered =
+            opportunities.filter(
+                function(opportunity) {
+
+                    const matchesSearch =
+                        !search ||
+                        opportunity.title
+                            .toLowerCase()
+                            .includes(search) ||
+
+                        opportunity.description
+                            .toLowerCase()
+                            .includes(search) ||
+
+                        opportunity.category
+                            .toLowerCase()
+                            .includes(search) ||
+
+                        opportunity.poster
+                            .toLowerCase()
+                            .includes(search);
+
+
+                    const matchesCategory =
+                        category === "all" ||
+                        opportunity.category ===
+                        category;
+
+
+                    const matchesCampus =
+                        campus === "all" ||
+                        opportunity.campus ===
+                        campus;
+
+
+                    return (
+                        matchesSearch &&
+                        matchesCategory &&
+                        matchesCampus
+                    );
+
+                }
+            );
+
+
+        loadOpportunities(filtered);
+
+    }
+
+
+    /* =========================================
+       SHOW OPPORTUNITIES
+       ========================================= */
+
+    function showOpportunities() {
+
+        document
+            .getElementById(
+                "opportunitySection"
+            )
+            .style.display = "block";
+
+
+        document
+            .getElementById(
+                "postOpportunitySection"
+            )
+            .style.display = "none";
+
+
+        document
+            .getElementById(
+                "myOpportunitiesSection"
+            )
+            .style.display = "none";
+
+
+        loadOpportunities(
+            getOpportunities()
+        );
+
+
+        window.scrollTo({
+
+            top:
+                document
+                    .getElementById(
+                        "opportunitySection"
+                    )
+                    .offsetTop - 90,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    /* =========================================
+       SHOW POST FORM
+       ========================================= */
+
+    function showPostForm() {
+
+        document
+            .getElementById(
+                "opportunitySection"
+            )
+            .style.display = "none";
+
+
+        document
+            .getElementById(
+                "myOpportunitiesSection"
+            )
+            .style.display = "none";
+
+
+        document
+            .getElementById(
+                "postOpportunitySection"
+            )
+            .style.display = "block";
+
+
+        window.scrollTo({
+
+            top:
+                document
+                    .getElementById(
+                        "postOpportunitySection"
+                    )
+                    .offsetTop - 90,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    /* =========================================
+       POST OPPORTUNITY
+       ========================================= */
+
+    function postOpportunity(event) {
+
+        event.preventDefault();
+
+
+        const opportunities =
+            getOpportunities();
+
+
+        const newOpportunity = {
+
+            id: Date.now(),
+
+            title:
+                document
+                    .getElementById(
+                        "opportunityTitle"
+                    )
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById(
+                        "opportunityDescription"
+                    )
+                    .value
+                    .trim(),
+
+            category:
+                document
+                    .getElementById(
+                        "opportunityCategory"
+                    )
+                    .value,
+
+            campus:
+                document
+                    .getElementById(
+                        "opportunityCampus"
+                    )
+                    .value,
+
+            budget:
+                Number(
+                    document
+                        .getElementById(
+                            "opportunityBudget"
+                        )
+                        .value
+                ),
+
+            deadline:
+                document
+                    .getElementById(
+                        "opportunityDeadline"
+                    )
+                    .value,
+
+            poster:
+                document
+                    .getElementById(
+                        "posterName"
+                    )
+                    .value
+                    .trim(),
+
+            contact:
+                document
+                    .getElementById(
+                        "posterContact"
+                    )
+                    .value
+                    .trim(),
+
+            status: "Open",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        opportunities.push(
+            newOpportunity
+        );
+
+
+        localStorage.setItem(
+            "eduMarketOpportunities",
+            JSON.stringify(
+                opportunities
+            )
+        );
+
+
+        /*
+           Store the latest poster name
+           for demo user identification.
+        */
+
+        localStorage.setItem(
+            "eduMarketCurrentUserName",
+            newOpportunity.poster
+        );
+
+
+        alert(
+            "Opportunity posted successfully!"
+        );
+
+
+        document
+            .querySelector(
+                "#postOpportunitySection form"
+            )
+            .reset();
+
+
+        showMyOpportunities();
+
+    }
+
+
+    /* =========================================
+       VIEW OPPORTUNITY
+       ========================================= */
+
+    let selectedOpportunityId =
+        null;
+
+
+    function viewOpportunity(id) {
+
+        const opportunities =
+            getOpportunities();
+
+
+        const opportunity =
+            opportunities.find(
+                function(item) {
+
+                    return String(item.id) ===
+                           String(id);
+
+                }
+            );
+
+
+        if (!opportunity) {
+
+            alert(
+                "Opportunity could not be found."
+            );
+
+            return;
+
+        }
+
+
+        selectedOpportunityId =
+            opportunity.id;
+
+
+        document.getElementById(
+            "modalContent"
+        ).innerHTML = `
+
+            <button
+                class="close-button"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+
+            <h2>
+                ${escapeHtml(
+                    opportunity.title
+                )}
+            </h2>
+
+
+            <p class="modal-subtitle">
+
+                ${escapeHtml(
+                    opportunity.description
+                )}
+
+            </p>
+
+
+            <div class="modal-details">
+
+                <div class="modal-detail-row">
+
+                    <span class="modal-detail-label">
+                        Category
+                    </span>
+
+                    <span class="modal-detail-value">
+                        ${escapeHtml(
+                            opportunity.category
+                        )}
+                    </span>
+
+                </div>
+
+
+                <div class="modal-detail-row">
+
+                    <span class="modal-detail-label">
+                        Campus
+                    </span>
+
+                    <span class="modal-detail-value">
+                        ${escapeHtml(
+                            opportunity.campus
+                        )}
+                    </span>
+
+                </div>
+
+
+                <div class="modal-detail-row">
+
+                    <span class="modal-detail-label">
+                        Budget
+                    </span>
+
+                    <span class="modal-detail-value">
+                        R${Number(
+                            opportunity.budget
+                        ).toLocaleString("en-ZA")}
+                    </span>
+
+                </div>
+
+
+                <div class="modal-detail-row">
+
+                    <span class="modal-detail-label">
+                        Deadline
+                    </span>
+
+                    <span class="modal-detail-value">
+                        ${formatDate(
+                            opportunity.deadline
+                        )}
+                    </span>
+
+                </div>
+
+
+                <div class="modal-detail-row">
+
+                    <span class="modal-detail-label">
+                        Posted By
+                    </span>
+
+                    <span class="modal-detail-value">
+                        ${escapeHtml(
+                            opportunity.poster
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            ${
+                opportunity.status === "Assigned"
+
+                ? `
+
+                    <div class="accepted-box">
+
+                        <strong>
+                            ✅ Opportunity Assigned
+                        </strong>
+
+                        <p style="margin-top:7px;">
+
+                            This opportunity already has
+                            an accepted offer.
+
+                        </p>
+
+                    </div>
+
+                `
+
+                : `
+
+                    <div class="offer-form">
+
+                        <h3 style="margin-bottom:15px;">
+                            Submit an Offer
+                        </h3>
+
+
+                        <form
+                            onsubmit="submitOffer(event)">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Your Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="offerName"
+                                    placeholder="Your name"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Your Offer (R)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="offerAmount"
+                                    min="0"
+                                    placeholder="e.g. 400"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="offerMessage"
+                                    placeholder="Explain how you can help..."
+                                    required></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="submit-button">
+
+                                Submit Offer
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                `
+            }
+
+        `;
+
+
+        document.getElementById(
+            "viewModal"
+        ).style.display = "flex";
+
+    }
+
+
+    /* =========================================
+       CLOSE MODAL
+       ========================================= */
+
+    function closeModal() {
+
+        document.getElementById(
+            "viewModal"
+        ).style.display = "none";
+
+
+        selectedOpportunityId =
+            null;
+
+    }
+
+
+    /* =========================================
+       SUBMIT OFFER
+       ========================================= */
+
+    function submitOffer(event) {
+
+        event.preventDefault();
+
+
+        if (!selectedOpportunityId) {
+
+            alert(
+                "Please select an opportunity first."
+            );
+
+            return;
+
+        }
+
+
+        const opportunities =
+            getOpportunities();
+
+
+        const opportunity =
+            opportunities.find(
+                function(item) {
+
+                    return String(item.id) ===
+                           String(
+                               selectedOpportunityId
+                           );
+
+                }
+            );
+
+
+        if (!opportunity) {
+
+            alert(
+                "Opportunity could not be found."
+            );
+
+            return;
+
+        }
+
+
+        if (opportunity.status === "Assigned") {
+
+            alert(
+                "This opportunity has already been assigned."
+            );
+
+            return;
+
+        }
+
+
+        const offers =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketOpportunityOffers"
+                )
+            ) || [];
+
+
+        const newOffer = {
+
+            id: Date.now(),
+
+            opportunityId:
+                selectedOpportunityId,
+
+            sellerName:
+                document
+                    .getElementById(
+                        "offerName"
+                    )
+                    .value
+                    .trim(),
+
+            amount:
+                Number(
+                    document
+                        .getElementById(
+                            "offerAmount"
+                        )
+                        .value
+                ),
+
+            message:
+                document
+                    .getElementById(
+                        "offerMessage"
+                    )
+                    .value
+                    .trim(),
+
+            status: "Pending",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        offers.push(
+            newOffer
+        );
+
+
+        localStorage.setItem(
+            "eduMarketOpportunityOffers",
+            JSON.stringify(offers)
+        );
+
+
+        alert(
+            "Your offer has been submitted!"
+        );
+
+
+        closeModal();
+
+    }
+
+
+    /* =========================================
+       SHOW MY OPPORTUNITIES
+       ========================================= */
+
+    function showMyOpportunities() {
+
+        document
+            .getElementById(
+                "opportunitySection"
+            )
+            .style.display = "none";
+
+
+        document
+            .getElementById(
+                "postOpportunitySection"
+            )
+            .style.display = "none";
+
+
+        document
+            .getElementById(
+                "myOpportunitiesSection"
+            ).style.display = "block";
+
+
+        loadMyOpportunities();
+
+
+        window.scrollTo({
+
+            top:
+                document
+                    .getElementById(
+                        "myOpportunitiesSection"
+                    )
+                    .offsetTop - 90,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    /* =========================================
+       LOAD MY OPPORTUNITIES
+       ========================================= */
+
+    function loadMyOpportunities() {
+
+        const opportunities =
+            getOpportunities();
+
+
+        const offers =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketOpportunityOffers"
+                )
+            ) || [];
+
+
+        const container =
+            document.getElementById(
+                "myOpportunitiesGrid"
+            );
+
+
+        container.innerHTML = "";
+
+
+        const posterName =
+            localStorage.getItem(
+                "eduMarketCurrentUserName"
+            );
+
+
+        let myOpportunities =
+            opportunities;
+
+
+        /*
+           If we know the current demo user,
+           show only their opportunities.
+        */
+
+        if (posterName) {
+
+            myOpportunities =
+                opportunities.filter(
+                    function(opportunity) {
+
+                        return opportunity.poster ===
+                               posterName;
+
+                    }
+                );
+
+        }
+
+
+        /*
+           If there is no current user,
+           show all opportunities for testing.
+        */
+
+        if (
+            myOpportunities.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div style="
+                    text-align:center;
+                    padding:50px 20px;
+                    background:#f8fafc;
+                    border-radius:10px;
+                ">
+
+                    <div style="
+                        font-size:45px;
+                        margin-bottom:15px;
+                    ">
+                        📋
+                    </div>
+
+                    <h3>
+                        You haven't posted any opportunities yet
+                    </h3>
+
+                    <p style="
+                        color:#6b7280;
+                        margin-top:8px;
+                    ">
+
+                        Post an opportunity to start
+                        receiving offers.
+
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        myOpportunities.forEach(
+            function(opportunity) {
+
+                const opportunityOffers =
+                    offers.filter(
+                        function(offer) {
+
+                            return String(
+                                offer.opportunityId
+                            ) ===
+                            String(
+                                opportunity.id
+                            );
+
+                        }
+                    );
+
+
+                const acceptedOffer =
+                    opportunityOffers.find(
+                        function(offer) {
+
+                            return offer.status ===
+                                   "Accepted";
+
+                        }
+                    );
+
+
+                const status =
+                    opportunity.status ||
+                    "Open";
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "my-opportunity-card";
+
+
+                const statusClass =
+                    status === "Assigned"
+                        ? "status-assigned"
+                        : "status-open";
+
+
+                card.innerHTML = `
+
+                    <div class="my-opportunity-header">
+
+                        <div>
+
+                            <h3>
+                                ${escapeHtml(
+                                    opportunity.title
+                                )}
+                            </h3>
+
+                            <p class="my-opportunity-description">
+
+                                ${escapeHtml(
+                                    opportunity.description
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            class="status-badge ${statusClass}">
+
+                            ${escapeHtml(
+                                status
+                            )}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="my-opportunity-info">
+
+                        <span>
+                            💰 Budget:
+                            <strong>
+                                R${Number(
+                                    opportunity.budget
+                                ).toLocaleString("en-ZA")}
+                            </strong>
+                        </span>
+
+
+                        <span>
+                            📍
+                            ${escapeHtml(
+                                opportunity.campus
+                            )}
+                        </span>
+
+
+                        <span>
+                            📅
+                            ${formatDate(
+                                opportunity.deadline
+                            )}
+                        </span>
+
+
+                        <span>
+                            💼
+                            <strong>
+                                ${opportunityOffers.length}
+                            </strong>
+
+                            Offer${
+                                opportunityOffers.length === 1
+                                    ? ""
+                                    : "s"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    ${
+                        acceptedOffer
+
+                        ? `
+
+                            <div class="accepted-box">
+
+                                <strong>
+                                    ✅ Offer Accepted
+                                </strong>
+
+                                <p style="margin-top:7px;">
+
+                                    ${escapeHtml(
+                                        acceptedOffer.sellerName
+                                    )}
+
+                                    —
+
+                                    R${Number(
+                                        acceptedOffer.amount
+                                    ).toLocaleString("en-ZA")}
+
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="view-offers-button"
+                                onclick="viewOpportunityOffers(
+                                    ${opportunity.id}
+                                )">
+
+                                👀 View Accepted Offer
+
+                            </button>
+
+                        `
+
+                        : `
+
+                            <button
+                                class="view-offers-button"
+                                onclick="viewOpportunityOffers(
+                                    ${opportunity.id}
+                                )">
+
+                                👀 View
+                                ${opportunityOffers.length}
+                                Offer${
+                                    opportunityOffers.length === 1
+                                        ? ""
+                                        : "s"
+                                }
+
+                            </button>
+
+                        `
+
+                    }
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       VIEW OPPORTUNITY OFFERS
+       ========================================= */
+
+    function viewOpportunityOffers(
+        opportunityId
+    ) {
+
+        const opportunities =
+            getOpportunities();
+
+
+        const offers =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketOpportunityOffers"
+                )
+            ) || [];
+
+
+        const opportunity =
+            opportunities.find(
+                function(item) {
+
+                    return String(item.id) ===
+                           String(opportunityId);
+
+                }
+            );
+
+
+        if (!opportunity) {
+
+            alert(
+                "Opportunity could not be found."
+            );
+
+            return;
+
+        }
+
+
+        const opportunityOffers =
+            offers.filter(
+                function(offer) {
+
+                    return String(
+                        offer.opportunityId
+                    ) ===
+                    String(opportunityId);
+
+                }
+            );
+
+
+        const modalContent =
+            document.getElementById(
+                "modalContent"
+            );
+
+
+        if (
+            opportunityOffers.length === 0
+        ) {
+
+            modalContent.innerHTML = `
+
+                <button
+                    class="close-button"
+                    onclick="closeModal()">
+
+                    ×
+
+                </button>
+
+
+                <h2>
+                    No Offers Yet
+                </h2>
+
+
+                <p class="modal-subtitle">
+
+                    No students have submitted
+                    offers for this opportunity yet.
+
+                </p>
+
+            `;
+
+
+            document.getElementById(
+                "viewModal"
+            ).style.display = "flex";
+
+
+            return;
+
+        }
+
+
+        modalContent.innerHTML = `
+
+            <button
+                class="close-button"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+
+            <h2>
+                Offers for
+                ${escapeHtml(
+                    opportunity.title
+                )}
+            </h2>
+
+
+            <p class="modal-subtitle">
+
+                Review the students who have offered
+                to complete this opportunity.
+
+            </p>
+
+
+            <div style="
+                display:flex;
+                flex-direction:column;
+                gap:15px;
+            ">
+
+                ${opportunityOffers
+                    .map(
+                        function(offer) {
+
+                            return `
+
+                                <div class="offer-card">
+
+                                    <div class="offer-card-header">
+
+                                        <strong>
+                                            ${escapeHtml(
+                                                offer.sellerName
+                                            )}
+                                        </strong>
+
+                                        <strong
+                                            class="offer-amount">
+
+                                            R${Number(
+                                                offer.amount
+                                            ).toLocaleString(
+                                                "en-ZA"
+                                            )}
+
+                                        </strong>
+
+                                    </div>
+
+
+                                    <p class="offer-message">
+
+                                        ${escapeHtml(
+                                            offer.message
+                                        )}
+
+                                    </p>
+
+
+                                    ${
+                                        offer.status ===
+                                        "Accepted"
+
+                                        ? `
+
+                                            <div class="
+                                                accepted-offer-badge
+                                            ">
+
+                                                ✅ Accepted
+
+                                            </div>
+
+                                        `
+
+                                        : `
+
+                                            <button
+                                                class="
+                                                    accept-offer-button
+                                                "
+                                                onclick="
+                                                    acceptOpportunityOffer(
+                                                        ${offer.id},
+                                                        ${opportunity.id}
+                                                    )
+                                                ">
+
+                                                ✅ Accept This Offer
+
+                                            </button>
+
+                                        `
+
+                                    }
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("")}
+
+            </div>
+
+        `;
+
+
+        document.getElementById(
+            "viewModal"
+        ).style.display = "flex";
+
+    }
+
+
+    /* =========================================
+       ACCEPT OPPORTUNITY OFFER
+       ========================================= */
+
+    function acceptOpportunityOffer(
+        offerId,
+        opportunityId
+    ) {
+
+        const confirmed =
+            confirm(
+                "Accept this student's offer?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        const offers =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketOpportunityOffers"
+                )
+            ) || [];
+
+
+        const offer =
+            offers.find(
+                function(item) {
+
+                    return String(item.id) ===
+                           String(offerId);
+
+                }
+            );
+
+
+        if (!offer) {
+
+            alert(
+                "Offer could not be found."
+            );
+
+            return;
+
+        }
+
+
+        const alreadyAccepted =
+            offers.some(
+                function(item) {
+
+                    return String(
+                        item.opportunityId
+                    ) ===
+                    String(opportunityId) &&
+
+                    item.status ===
+                    "Accepted";
+
+                }
+            );
+
+
+        if (alreadyAccepted) {
+
+            alert(
+                "An offer has already been accepted for this opportunity."
+            );
+
+            return;
+
+        }
+
+
+        offer.status =
+            "Accepted";
+
+
+        offer.acceptedAt =
+            new Date().toISOString();
+
+
+        localStorage.setItem(
+            "eduMarketOpportunityOffers",
+            JSON.stringify(offers)
+        );
+
+
+        const opportunities =
+            getOpportunities();
+
+
+        const opportunity =
+            opportunities.find(
+                function(item) {
+
+                    return String(item.id) ===
+                           String(opportunityId);
+
+                }
+            );
+
+
+        if (opportunity) {
+
+            opportunity.status =
+                "Assigned";
+
+
+            opportunity.acceptedOfferId =
+                offer.id;
+
+
+            opportunity.acceptedSeller =
+                offer.sellerName;
+
+
+            opportunity.acceptedAmount =
+                offer.amount;
+
+
+            opportunity.assignedAt =
+                new Date().toISOString();
+
+        }
+
+
+        localStorage.setItem(
+            "eduMarketOpportunities",
+            JSON.stringify(
+                opportunities
+            )
+        );
+
+
+        alert(
+            "Offer accepted! " +
+            offer.sellerName +
+            " has been assigned to this opportunity."
+        );
+
+
+        closeModal();
+
+
+        loadMyOpportunities();
+
+    }
+
+
+    /* =========================================
+       CLOSE MODAL WHEN CLICKING OUTSIDE
+       ========================================= */
+
+    document
+        .getElementById("viewModal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+    /* =========================================
+       INITIAL LOAD
+       ========================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadOpportunities(
+                getOpportunities()
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

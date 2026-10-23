@@ -1,0 +1,4707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMarket | CampusRide</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================
+           CAMPUSRIDE PAGE
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #111827;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .campus-navbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 25px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .campus-nav-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .campus-logo {
+            font-size: 25px;
+            font-weight: 900;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .campus-nav-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .campus-nav-links a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .campus-nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .ride-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        /*
+         * IMPORTANT:
+         * The badge uses INLINE-STYLE-LIKE specificity here
+         * so style.css cannot easily hide it.
+         */
+
+        .campus-eduvos-badge {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.16) !important;
+            border: 2px solid rgba(255, 255, 255, 0.45) !important;
+            color: #ffffff !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            font-size: 15px;
+            font-weight: 800;
+            position: relative;
+            z-index: 10;
+        }
+
+        .campus-eduvos-icon {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px;
+            min-height: 32px;
+            border-radius: 50%;
+            background: #ffffff !important;
+            color: #1e3a8a !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .ride-hero h1 {
+            margin: 0 0 15px;
+            font-size: 52px;
+            line-height: 1.1;
+        }
+
+        .ride-hero-description {
+            max-width: 750px;
+            margin: 0 auto 30px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #e5e7eb;
+        }
+
+        .ride-buttons {
+            max-width: 950px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .ride-main-btn {
+            border: none;
+            padding: 14px 22px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .ride-main-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .ride-main-btn-white {
+            background: #ffffff;
+            color: #1e3a8a;
+        }
+
+        .ride-main-btn-blue {
+            background: #2563eb;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .ride-main-btn-blue:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .ride-container {
+            max-width: 1150px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .ride-section {
+            display: none;
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 32px;
+            margin-bottom: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .ride-section.active {
+            display: block !important;
+        }
+
+        .ride-section h2 {
+            margin-top: 0;
+            color: #111827;
+            font-size: 28px;
+        }
+
+        /* =========================================
+           FORMS
+        ========================================= */
+
+        .ride-form {
+            display: grid;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #ffffff;
+            color: #111827;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #15803d;
+        }
+
+        .cancel-btn {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .cancel-btn:hover {
+            background: #4b5563;
+        }
+
+        .danger-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .danger-btn:hover {
+            background: #b91c1c;
+        }
+
+        .success-message {
+            display: none;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        .ride-search-box {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 22px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .ride-filter-actions {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .request-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .request-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .request-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .ride-results-text {
+            color: #6b7280;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        /* =========================================
+           RIDE CARDS
+        ========================================= */
+
+        .rides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ride-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .ride-card h3 {
+            margin: 0 0 5px;
+            color: #111827;
+        }
+
+        .driver-label {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .ride-info {
+            line-height: 1.7;
+            margin: 8px 0;
+        }
+
+        .ride-notes {
+            background: #f3f4f6;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .seat-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .seat-badge.full {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 35px 20px;
+            color: #6b7280;
+        }
+
+        /* =========================================
+           REQUEST CARDS
+        ========================================= */
+
+        .request-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+
+        .request-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-accepted {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-declined {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-cancelled {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .request-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .accept-btn {
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .accept-btn:hover {
+            background: #15803d;
+        }
+
+        .decline-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .decline-btn:hover {
+            background: #b91c1c;
+        }
+
+        .confirmed-box {
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .contact-box {
+            background: #eff6ff;
+            border: 1px solid #93c5fd;
+            color: #1e3a8a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .cancelled-box {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* =========================================
+           MANAGEMENT
+        ========================================= */
+
+        .management-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .management-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        /* =========================================
+           WALLET
+        ========================================= */
+
+        .wallet-summary {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+        }
+
+        .wallet-balance-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 7px;
+        }
+
+        .wallet-balance {
+            font-size: 42px;
+            font-weight: 900;
+        }
+
+        .wallet-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .wallet-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .wallet-transaction {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 0;
+        }
+
+        .wallet-transaction:last-child {
+            border-bottom: none;
+        }
+
+        .wallet-credit {
+            color: #15803d;
+            font-weight: 800;
+        }
+
+        .wallet-debit {
+            color: #dc2626;
+            font-weight: 800;
+        }
+
+        .payment-box {
+            background: #eff6ff;
+            border: 1px solid #93c5fd;
+            color: #1e3a8a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .paid-box {
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* =========================================
+           FEATURES
+        ========================================= */
+
+        .features {
+            max-width: 1150px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           HOW IT WORKS
+        ========================================= */
+
+        .how-it-works {
+            background: #f1f5f9;
+            padding: 60px 20px;
+        }
+
+        .how-it-works-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 30px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .step p {
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           SAFETY
+        ========================================= */
+
+        .safety {
+            max-width: 950px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .safety-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .safety-box h2 {
+            margin-top: 0;
+        }
+
+        .safety-box p {
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .campus-nav-container {
+                flex-direction: column;
+            }
+
+            .ride-search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .ride-hero h1 {
+                font-size: 40px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .campus-navbar {
+                padding: 15px;
+            }
+
+            .campus-nav-links {
+                gap: 10px;
+            }
+
+            .campus-nav-links a {
+                font-size: 12px;
+            }
+
+            .ride-hero {
+                padding: 60px 15px;
+            }
+
+            .ride-hero h1 {
+                font-size: 36px;
+            }
+
+            .ride-hero-description {
+                font-size: 16px;
+            }
+
+            .ride-section {
+                padding: 20px;
+            }
+
+            .ride-container {
+                padding: 0 12px;
+            }
+
+            .campus-eduvos-badge {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav class="campus-navbar">
+
+        <div class="campus-nav-container">
+
+            <a href="index.html" class="campus-logo">
+                EduMarket
+            </a>
+
+            <div class="campus-nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="marketplace.html">Marketplace</a>
+
+                <a href="services.html">Services</a>
+
+                <a href="opportunities.html">Opportunities</a>
+
+                <a href="campusride.html">CampusRide</a>
+
+                <a href="seller-dashboard.html">Dashboard</a>
+
+                <a href="login.html">Login</a>
+
+                <a href="register.html">Register</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="ride-hero">
+
+
+        <!-- EDUVOS BADGE -->
+
+        <div
+            class="campus-eduvos-badge"
+            id="eduvosBadge"
+            style="
+                display:inline-flex !important;
+                visibility:visible !important;
+                opacity:1 !important;
+            ">
+
+            <div class="campus-eduvos-icon">
+                E
+            </div>
+
+            <span>
+                Eduvos Student Transport
+            </span>
+
+        </div>
+
+
+        <h1>
+            CampusRide
+        </h1>
+
+
+        <p class="ride-hero-description">
+
+            Connect with fellow Eduvos students for
+            safe, affordable and convenient campus
+            transportation.
+
+        </p>
+
+
+        <div class="ride-buttons">
+
+
+            <button
+                class="ride-main-btn ride-main-btn-white"
+                onclick="findRide()">
+
+                Find a Ride
+
+            </button>
+
+
+            <button
+                class="ride-main-btn ride-main-btn-blue"
+                onclick="offerRide()">
+
+                Offer a Ride
+
+            </button>
+
+
+            <button
+                class="ride-main-btn ride-main-btn-blue"
+                onclick="viewDriverRequests()">
+
+                View Ride Requests
+
+            </button>
+
+
+            <button
+                class="ride-main-btn ride-main-btn-blue"
+                onclick="viewMyRequests()">
+
+                My Ride Requests
+
+            </button>
+
+
+            <button
+                class="ride-main-btn ride-main-btn-blue"
+                onclick="manageRides()">
+
+                Manage My Rides
+
+            </button>
+
+
+            <button
+                class="ride-main-btn ride-main-btn-blue"
+                onclick="viewWallet()">
+
+                EduMarket Wallet
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <div class="ride-container">
+
+
+        <!-- =====================================
+             OFFER RIDE
+        ====================================== -->
+
+        <section
+            id="offerRideSection"
+            class="ride-section">
+
+
+            <h2>
+                Offer a Ride
+            </h2>
+
+
+            <div
+                id="offerSuccess"
+                class="success-message">
+
+                Your ride has been published successfully!
+
+            </div>
+
+
+            <form
+                id="offerRideForm"
+                class="ride-form">
+
+
+                <div class="form-group">
+
+                    <label for="driverName">
+                        Driver Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driverName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="driverContact">
+                        Your Contact Information
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driverContact"
+                        placeholder="Phone number or email"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="pickupLocation">
+                        Pickup Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pickupLocation"
+                        placeholder="Example: Eduvos Pretoria"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="Example: Menlyn Maine"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="rideDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="rideDate"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="rideTime">
+                        Departure Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="rideTime"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="availableSeats">
+                        Available Seats
+                    </label>
+
+                    <select
+                        id="availableSeats"
+                        required>
+
+                        <option value="1">
+                            1 Seat
+                        </option>
+
+                        <option value="2">
+                            2 Seats
+                        </option>
+
+                        <option value="3">
+                            3 Seats
+                        </option>
+
+                        <option value="4" selected>
+                            4 Seats
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="fuelContribution">
+                        Fuel Contribution Per Passenger (R)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="fuelContribution"
+                        min="0"
+                        step="1"
+                        placeholder="Example: 100"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="rideNotes">
+                        Extra Notes
+                    </label>
+
+                    <textarea
+                        id="rideNotes"
+                        placeholder="Example: Reliable student transport"></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        Publish Ride
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeSections()">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             FIND RIDE
+        ====================================== -->
+
+        <section
+            id="findRideSection"
+            class="ride-section">
+
+
+            <h2>
+                Find a Ride
+            </h2>
+
+
+            <div class="ride-search-box">
+
+
+                <div class="form-group">
+
+                    <label for="searchPickup">
+                        Pickup Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="searchPickup"
+                        placeholder="Example: Eduvos Pretoria">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="searchDestination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="searchDestination"
+                        placeholder="Example: Menlyn Maine">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="searchDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="searchDate">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="searchSeats">
+                        Minimum Seats Available
+                    </label>
+
+                    <select id="searchSeats">
+
+                        <option value="0">
+                            Any number of seats
+                        </option>
+
+                        <option value="1">
+                            At least 1 seat
+                        </option>
+
+                        <option value="2">
+                            At least 2 seats
+                        </option>
+
+                        <option value="3">
+                            At least 3 seats
+                        </option>
+
+                        <option value="4">
+                            4 seats
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="ride-filter-actions">
+
+                    <button
+                        type="button"
+                        class="request-btn"
+                        onclick="applyRideFilters()">
+
+                        Search Rides
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="clearRideFilters()">
+
+                        Clear Filters
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                id="rideResultsText"
+                class="ride-results-text">
+            </div>
+
+
+            <div
+                id="ridesContainer"
+                class="rides-grid">
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeSections()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             REQUEST RIDE
+        ====================================== -->
+
+        <section
+            id="requestRideSection"
+            class="ride-section">
+
+
+            <h2>
+                Request This Ride
+            </h2>
+
+
+            <div
+                id="selectedRideInfo"
+                style="
+                    background:#f3f4f6;
+                    padding:15px;
+                    border-radius:8px;
+                    margin-bottom:20px;
+                ">
+            </div>
+
+
+            <div
+                id="requestSuccess"
+                class="success-message">
+
+                Your ride request has been submitted successfully.
+
+            </div>
+
+
+            <form
+                id="requestRideForm"
+                class="ride-form">
+
+
+                <div class="form-group">
+
+                    <label for="passengerName">
+                        Passenger Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="passengerName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="passengerContact">
+                        Contact Information
+                    </label>
+
+                    <input
+                        type="text"
+                        id="passengerContact"
+                        placeholder="Phone number or email"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="passengerNotes">
+                        Message To Driver
+                    </label>
+
+                    <textarea
+                        id="passengerNotes"
+                        placeholder="Example: I will be ready at 07:00"></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="submit-btn">
+
+                        Submit Ride Request
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeSections()">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- =====================================
+             DRIVER REQUESTS
+        ====================================== -->
+
+        <section
+            id="driverRequestsSection"
+            class="ride-section">
+
+
+            <h2>
+                Ride Requests
+            </h2>
+
+
+            <div id="driverRequestsContainer">
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeSections()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             MY REQUESTS
+        ====================================== -->
+
+        <section
+            id="myRequestsSection"
+            class="ride-section">
+
+
+            <h2>
+                My Ride Requests
+            </h2>
+
+
+            <div id="myRequestsContainer">
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeSections()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             MANAGE RIDES
+        ====================================== -->
+
+        <section
+            id="manageRidesSection"
+            class="ride-section">
+
+
+            <h2>
+                Manage My Rides
+            </h2>
+
+
+            <div id="manageRidesContainer">
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeSections()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             WALLET
+        ====================================== -->
+
+        <section
+            id="walletSection"
+            class="ride-section">
+
+
+            <h2>
+                EduMarket Wallet
+            </h2>
+
+
+            <div class="wallet-summary">
+
+
+                <div class="wallet-balance-label">
+                    Available Wallet Balance
+                </div>
+
+
+                <div
+                    id="walletBalance"
+                    class="wallet-balance">
+
+                    R0.00
+
+                </div>
+
+
+                <div class="wallet-actions">
+
+                    <button
+                        type="button"
+                        class="submit-btn"
+                        onclick="showAddFunds()">
+
+                        Add Demo Funds
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="loadWallet()">
+
+                        Refresh Wallet
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                id="addFundsBox"
+                class="wallet-card"
+                style="display:none;">
+
+
+                <h3>
+                    Add Funds
+                </h3>
+
+
+                <p style="color:#6b7280;line-height:1.6;">
+
+                    This is a demo wallet for the
+                    EduMarket prototype.
+                    No real money is added.
+
+                </p>
+
+
+                <form
+                    id="addFundsForm"
+                    class="ride-form">
+
+
+                    <div class="form-group">
+
+                        <label for="walletTopUpAmount">
+                            Amount (R)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="walletTopUpAmount"
+                            min="1"
+                            step="1"
+                            placeholder="Example: 500"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="submit-btn">
+
+                            Add Funds
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            onclick="hideAddFunds()">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+
+            <div class="wallet-card">
+
+                <h3>
+                    Wallet Transactions
+                </h3>
+
+                <div id="walletTransactions">
+                </div>
+
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeSections()">
+
+                    Close
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+    <!-- =========================================
+         FEATURES
+    ========================================== -->
+
+    <section class="features">
+
+        <h2>
+            Why Use CampusRide?
+        </h2>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <h3>
+                    Affordable
+                </h3>
+
+                <p>
+                    Share fuel costs with fellow
+                    Eduvos students instead of paying
+                    expensive transport fees.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    Student Only
+                </h3>
+
+                <p>
+                    CampusRide is designed specifically
+                    for the Eduvos student community.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    Convenient
+                </h3>
+
+                <p>
+                    Find rides based on your route,
+                    date and departure time.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <h3>
+                    Connected
+                </h3>
+
+                <p>
+                    Connect directly with students who
+                    are travelling in the same direction.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         HOW IT WORKS
+    ========================================== -->
+
+    <section class="how-it-works">
+
+        <div class="how-it-works-container">
+
+            <h2>
+                How CampusRide Works
+            </h2>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h3>
+                        Find a Ride
+                    </h3>
+
+                    <p>
+                        Search for students travelling
+                        along your route.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h3>
+                        Request
+                    </h3>
+
+                    <p>
+                        Send a request to the driver
+                        with your contact details.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h3>
+                        Get Accepted
+                    </h3>
+
+                    <p>
+                        The driver reviews your request
+                        and accepts or declines it.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <h3>
+                        Travel
+                    </h3>
+
+                    <p>
+                        Meet at the agreed pickup location
+                        and travel together.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SAFETY
+    ========================================== -->
+
+    <section class="safety">
+
+        <div class="safety-box">
+
+            <h2>
+                CampusRide Safety
+            </h2>
+
+            <p>
+
+                Always verify that the person you are
+                travelling with is an Eduvos student.
+                Meet in safe public locations and never
+                share sensitive financial information.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        let selectedRide = null;
+
+
+        /* =========================================
+           CLOSE SECTIONS
+        ========================================== */
+
+        function closeSections() {
+
+            const sectionIds = [
+                "offerRideSection",
+                "findRideSection",
+                "requestRideSection",
+                "driverRequestsSection",
+                "myRequestsSection",
+                "manageRidesSection",
+                "walletSection"
+            ];
+
+
+            sectionIds.forEach(function(id) {
+
+                const section =
+                    document.getElementById(id);
+
+
+                if (section) {
+
+                    section.classList.remove("active");
+
+                }
+
+            });
+
+        }
+
+
+        /* =========================================
+           OFFER RIDE
+        ========================================== */
+
+        function offerRide() {
+
+            closeSections();
+
+
+            const section =
+                document.getElementById(
+                    "offerRideSection"
+                );
+
+
+            section.classList.add("active");
+
+
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        document
+            .getElementById("offerRideForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const ride = {
+
+                    id: Date.now(),
+
+                    driverName:
+                        document
+                            .getElementById("driverName")
+                            .value
+                            .trim(),
+
+                    driverContact:
+                        document
+                            .getElementById("driverContact")
+                            .value
+                            .trim(),
+
+                    pickupLocation:
+                        document
+                            .getElementById("pickupLocation")
+                            .value
+                            .trim(),
+
+                    destination:
+                        document
+                            .getElementById("destination")
+                            .value
+                            .trim(),
+
+                    date:
+                        document
+                            .getElementById("rideDate")
+                            .value,
+
+                    time:
+                        document
+                            .getElementById("rideTime")
+                            .value,
+
+                    availableSeats:
+                        Number(
+                            document
+                                .getElementById(
+                                    "availableSeats"
+                                )
+                                .value
+                        ),
+
+                    fuelContribution:
+                        Number(
+                            document
+                                .getElementById(
+                                    "fuelContribution"
+                                )
+                                .value
+                        ),
+
+                    notes:
+                        document
+                            .getElementById("rideNotes")
+                            .value
+                            .trim(),
+
+                    cancelled: false,
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                const rides =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "campusRides"
+                        )
+                    ) || [];
+
+
+                rides.push(ride);
+
+
+                localStorage.setItem(
+                    "campusRides",
+                    JSON.stringify(rides)
+                );
+
+
+                document
+                    .getElementById("offerSuccess")
+                    .classList.add("show");
+
+
+                document
+                    .getElementById("offerRideForm")
+                    .reset();
+
+            });
+
+
+        /* =========================================
+           FIND RIDE
+        ========================================== */
+
+        function findRide() {
+
+            closeSections();
+
+
+            const section =
+                document.getElementById(
+                    "findRideSection"
+                );
+
+
+            section.classList.add("active");
+
+
+            loadRides();
+
+
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        function getRemainingSeats(ride) {
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            const acceptedCount =
+                requests.filter(function(request) {
+
+                    return (
+                        String(request.rideId) ===
+                        String(ride.id) &&
+                        request.status === "Accepted"
+                    );
+
+                }).length;
+
+
+            return Math.max(
+                0,
+                Number(ride.availableSeats) -
+                acceptedCount
+            );
+
+        }
+
+
+        function loadRides(filteredRides = null) {
+
+            const container =
+                document.getElementById(
+                    "ridesContainer"
+                );
+
+
+            const resultsText =
+                document.getElementById(
+                    "rideResultsText"
+                );
+
+
+            const allRides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            const rides =
+                filteredRides !== null
+                    ? filteredRides
+                    : allRides;
+
+
+            const activeRides =
+                rides.filter(function(ride) {
+
+                    return ride.cancelled !== true;
+
+                });
+
+
+            if (activeRides.length === 0) {
+
+                resultsText.textContent =
+                    "No matching rides found.";
+
+
+                container.innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h3>
+                            No rides available
+                        </h3>
+
+                        <p>
+                            Try changing your search
+                            filters or offer a new ride.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            resultsText.textContent =
+                activeRides.length +
+                (
+                    activeRides.length === 1
+                        ? " ride found"
+                        : " rides found"
+                );
+
+
+            activeRides.sort(function(a, b) {
+
+                return Number(b.id) - Number(a.id);
+
+            });
+
+
+            container.innerHTML = "";
+
+
+            activeRides.forEach(function(ride) {
+
+                const remainingSeats =
+                    getRemainingSeats(ride);
+
+
+                const full =
+                    remainingSeats <= 0;
+
+
+                const seatText =
+                    full
+                        ? "FULL"
+                        : remainingSeats +
+                          (
+                              remainingSeats === 1
+                                  ? " Seat Available"
+                                  : " Seats Available"
+                          );
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "ride-card";
+
+
+                card.innerHTML = `
+
+                    <h3>
+                        ${escapeHtml(ride.driverName)}
+                    </h3>
+
+                    <div class="driver-label">
+                        Eduvos Student Driver
+                    </div>
+
+                    <span class="seat-badge ${full ? "full" : ""}">
+                        ${seatText}
+                    </span>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Route:
+                        </strong>
+
+                        <br>
+
+                        ${escapeHtml(
+                            ride.pickupLocation
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            ride.destination
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Date:
+                        </strong>
+
+                        ${formatDate(ride.date)}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Departure:
+                        </strong>
+
+                        ${formatTime(ride.time)}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Fuel:
+                        </strong>
+
+                        R${Number(
+                            ride.fuelContribution
+                        ).toFixed(2)}
+
+                        per passenger
+
+                    </div>
+
+                    ${
+                        ride.notes
+                            ? `
+                                <div class="ride-notes">
+
+                                    <strong>
+                                        Driver Notes:
+                                    </strong>
+
+                                    <br>
+
+                                    ${escapeHtml(
+                                        ride.notes
+                                    )}
+
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        full
+                            ? `
+                                <button
+                                    class="request-btn"
+                                    disabled>
+
+                                    Ride Full
+
+                                </button>
+                            `
+                            : `
+                                <button
+                                    class="request-btn"
+                                    onclick="requestRide(
+                                        ${ride.id}
+                                    )">
+
+                                    Request This Ride
+
+                                </button>
+                            `
+                    }
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        /* =========================================
+           FILTER
+        ========================================== */
+
+        function applyRideFilters() {
+
+            const pickup =
+                document
+                    .getElementById(
+                        "searchPickup"
+                    )
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const destination =
+                document
+                    .getElementById(
+                        "searchDestination"
+                    )
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const date =
+                document
+                    .getElementById(
+                        "searchDate"
+                    )
+                    .value;
+
+
+            const seats =
+                Number(
+                    document
+                        .getElementById(
+                            "searchSeats"
+                        )
+                        .value
+                );
+
+
+            const rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            const filtered =
+                rides.filter(function(ride) {
+
+                    if (ride.cancelled === true) {
+                        return false;
+                    }
+
+
+                    const pickupMatch =
+                        pickup === "" ||
+                        String(
+                            ride.pickupLocation || ""
+                        )
+                        .toLowerCase()
+                        .includes(pickup);
+
+
+                    const destinationMatch =
+                        destination === "" ||
+                        String(
+                            ride.destination || ""
+                        )
+                        .toLowerCase()
+                        .includes(destination);
+
+
+                    const dateMatch =
+                        date === "" ||
+                        ride.date === date;
+
+
+                    const seatMatch =
+                        seats === 0 ||
+                        getRemainingSeats(ride) >= seats;
+
+
+                    return (
+                        pickupMatch &&
+                        destinationMatch &&
+                        dateMatch &&
+                        seatMatch
+                    );
+
+                });
+
+
+            loadRides(filtered);
+
+        }
+
+
+        function clearRideFilters() {
+
+            document
+                .getElementById(
+                    "searchPickup"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "searchDestination"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "searchDate"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "searchSeats"
+                )
+                .value = "0";
+
+
+            loadRides();
+
+        }
+
+
+        /* =========================================
+           REQUEST RIDE
+        ========================================== */
+
+        function requestRide(rideId) {
+
+            const rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            const ride =
+                rides.find(function(item) {
+
+                    return (
+                        String(item.id) ===
+                        String(rideId)
+                    );
+
+                });
+
+
+            if (!ride) {
+
+                alert(
+                    "This ride could not be found."
+                );
+
+                return;
+            }
+
+
+            if (ride.cancelled === true) {
+
+                alert(
+                    "This ride has been cancelled."
+                );
+
+                return;
+            }
+
+
+            if (getRemainingSeats(ride) <= 0) {
+
+                alert(
+                    "Sorry, this ride is full."
+                );
+
+                return;
+            }
+
+
+            selectedRide = ride;
+
+
+            document
+                .getElementById(
+                    "selectedRideInfo"
+                )
+                .innerHTML = `
+
+                    <strong>
+                        ${escapeHtml(
+                            ride.driverName
+                        )}
+                    </strong>
+
+                    <br><br>
+
+                    ${escapeHtml(
+                        ride.pickupLocation
+                    )}
+
+                    →
+
+                    ${escapeHtml(
+                        ride.destination
+                    )}
+
+                    <br><br>
+
+                    ${formatDate(
+                        ride.date
+                    )}
+
+                    at
+
+                    ${formatTime(
+                        ride.time
+                    )}
+
+                    <br><br>
+
+                    <strong>
+                        ${getRemainingSeats(ride)}
+                        seats remaining
+                    </strong>
+
+                `;
+
+
+            closeSections();
+
+
+            document
+                .getElementById(
+                    "requestRideSection"
+                )
+                .classList.add("active");
+
+
+            document
+                .getElementById(
+                    "requestSuccess"
+                )
+                .classList.remove("show");
+
+
+            document
+                .getElementById(
+                    "requestRideForm"
+                )
+                .reset();
+
+
+            document
+                .getElementById(
+                    "requestRideSection"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        document
+            .getElementById(
+                "requestRideForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    if (!selectedRide) {
+
+                        alert(
+                            "Please select a ride first."
+                        );
+
+                        return;
+                    }
+
+
+                    const rides =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "campusRides"
+                            )
+                        ) || [];
+
+
+                    const ride =
+                        rides.find(function(item) {
+
+                            return (
+                                String(item.id) ===
+                                String(selectedRide.id)
+                            );
+
+                        });
+
+
+                    if (!ride) {
+
+                        alert(
+                            "This ride no longer exists."
+                        );
+
+                        return;
+                    }
+
+
+                    if (
+                        ride.cancelled === true
+                    ) {
+
+                        alert(
+                            "This ride has been cancelled."
+                        );
+
+                        return;
+                    }
+
+
+                    if (
+                        getRemainingSeats(ride) <= 0
+                    ) {
+
+                        alert(
+                            "This ride is already full."
+                        );
+
+                        return;
+                    }
+
+
+                    const request = {
+
+                        id: Date.now(),
+
+                        rideId: ride.id,
+
+                        driverName:
+                            ride.driverName,
+
+                        driverContact:
+                            ride.driverContact,
+
+                        pickupLocation:
+                            ride.pickupLocation,
+
+                        destination:
+                            ride.destination,
+
+                        rideDate:
+                            ride.date,
+
+                        rideTime:
+                            ride.time,
+
+                        fuelContribution:
+                            Number(
+                                ride.fuelContribution
+                            ) || 0,
+
+                        passengerName:
+                            document
+                                .getElementById(
+                                    "passengerName"
+                                )
+                                .value
+                                .trim(),
+
+                        passengerContact:
+                            document
+                                .getElementById(
+                                    "passengerContact"
+                                )
+                                .value
+                                .trim(),
+
+                        passengerNotes:
+                            document
+                                .getElementById(
+                                    "passengerNotes"
+                                )
+                                .value
+                                .trim(),
+
+                        status:
+                            "Pending",
+
+                        fuelPaid:
+                            false,
+
+                        createdAt:
+                            new Date().toISOString()
+
+                    };
+
+
+                    const requests =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "campusRideRequests"
+                            )
+                        ) || [];
+
+
+                    requests.push(request);
+
+
+                    localStorage.setItem(
+                        "campusRideRequests",
+                        JSON.stringify(requests)
+                    );
+
+
+                    document
+                        .getElementById(
+                            "requestSuccess"
+                        )
+                        .classList.add("show");
+
+
+                    document
+                        .getElementById(
+                            "requestRideForm"
+                        )
+                        .reset();
+
+
+                    selectedRide = null;
+
+                }
+            );
+
+
+        /* =========================================
+           DRIVER REQUESTS
+        ========================================== */
+
+        function viewDriverRequests() {
+
+            closeSections();
+
+
+            document
+                .getElementById(
+                    "driverRequestsSection"
+                )
+                .classList.add("active");
+
+
+            loadDriverRequests();
+
+
+            document
+                .getElementById(
+                    "driverRequestsSection"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function loadDriverRequests() {
+
+            const container =
+                document.getElementById(
+                    "driverRequestsContainer"
+                );
+
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            if (requests.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h3>
+                            No ride requests yet
+                        </h3>
+
+                        <p>
+                            Student requests for your
+                            rides will appear here.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            requests.sort(function(a, b) {
+
+                return Number(b.id) - Number(a.id);
+
+            });
+
+
+            container.innerHTML = "";
+
+
+            requests.forEach(function(request) {
+
+                const statusClass =
+                    request.status === "Accepted"
+                        ? "status-accepted"
+                        : request.status === "Declined"
+                            ? "status-declined"
+                            : request.status === "Cancelled"
+                                ? "status-cancelled"
+                                : "status-pending";
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "request-card";
+
+
+                card.innerHTML = `
+
+                    <span class="request-status ${statusClass}">
+                        ${escapeHtml(
+                            request.status
+                        )}
+                    </span>
+
+                    <h3>
+                        ${escapeHtml(
+                            request.passengerName
+                        )}
+                    </h3>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Route:
+                        </strong>
+
+                        <br>
+
+                        ${escapeHtml(
+                            request.pickupLocation
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            request.destination
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Contact:
+                        </strong>
+
+                        ${escapeHtml(
+                            request.passengerContact
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Date:
+                        </strong>
+
+                        ${formatDate(
+                            request.rideDate
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Departure:
+                        </strong>
+
+                        ${formatTime(
+                            request.rideTime
+                        )}
+
+                    </div>
+
+                    ${
+                        request.passengerNotes
+                            ? `
+                                <div class="ride-notes">
+
+                                    <strong>
+                                        Passenger Message:
+                                    </strong>
+
+                                    <br>
+
+                                    ${escapeHtml(
+                                        request.passengerNotes
+                                    )}
+
+                                </div>
+                            `
+                            : ""
+                    }
+
+                    ${
+                        request.status === "Pending"
+                            ? `
+
+                                <div class="request-actions">
+
+                                    <button
+                                        class="accept-btn"
+                                        onclick="updateRequestStatus(
+                                            ${request.id},
+                                            'Accepted'
+                                        )">
+
+                                        Accept Request
+
+                                    </button>
+
+                                    <button
+                                        class="decline-btn"
+                                        onclick="updateRequestStatus(
+                                            ${request.id},
+                                            'Declined'
+                                        )">
+
+                                        Decline Request
+
+                                    </button>
+
+                                </div>
+
+                            `
+                            : ""
+                    }
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        function updateRequestStatus(
+            requestId,
+            newStatus
+        ) {
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            const request =
+                requests.find(function(item) {
+
+                    return (
+                        String(item.id) ===
+                        String(requestId)
+                    );
+
+                });
+
+
+            if (!request) {
+
+                alert(
+                    "Request could not be found."
+                );
+
+                return;
+            }
+
+
+            if (
+                newStatus === "Accepted" &&
+                request.status !== "Accepted"
+            ) {
+
+                const rides =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "campusRides"
+                        )
+                    ) || [];
+
+
+                const ride =
+                    rides.find(function(item) {
+
+                        return (
+                            String(item.id) ===
+                            String(request.rideId)
+                        );
+
+                    });
+
+
+                if (!ride) {
+
+                    alert(
+                        "Ride could not be found."
+                    );
+
+                    return;
+                }
+
+
+                if (
+                    getRemainingSeats(ride) <= 0
+                ) {
+
+                    alert(
+                        "There are no seats remaining."
+                    );
+
+                    return;
+                }
+
+            }
+
+
+            request.status =
+                newStatus;
+
+
+            request.updatedAt =
+                new Date().toISOString();
+
+
+            localStorage.setItem(
+                "campusRideRequests",
+                JSON.stringify(requests)
+            );
+
+
+            loadDriverRequests();
+
+        }
+
+
+        /* =========================================
+           MY REQUESTS
+        ========================================== */
+
+        function viewMyRequests() {
+
+            closeSections();
+
+
+            document
+                .getElementById(
+                    "myRequestsSection"
+                )
+                .classList.add("active");
+
+
+            loadMyRequests();
+
+
+            document
+                .getElementById(
+                    "myRequestsSection"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function loadMyRequests() {
+
+            const container =
+                document.getElementById(
+                    "myRequestsContainer"
+                );
+
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            if (requests.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h3>
+                            No ride requests yet
+                        </h3>
+
+                        <p>
+                            When you request a ride,
+                            it will appear here.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            requests.sort(function(a, b) {
+
+                return Number(b.id) - Number(a.id);
+
+            });
+
+
+            container.innerHTML = "";
+
+
+            requests.forEach(function(request) {
+
+                const statusClass =
+                    request.status === "Accepted"
+                        ? "status-accepted"
+                        : request.status === "Declined"
+                            ? "status-declined"
+                            : request.status === "Cancelled"
+                                ? "status-cancelled"
+                                : "status-pending";
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "request-card";
+
+
+                card.innerHTML = `
+
+                    <span class="request-status ${statusClass}">
+                        ${escapeHtml(
+                            request.status
+                        )}
+                    </span>
+
+                    <h3>
+                        Ride with
+                        ${escapeHtml(
+                            request.driverName
+                        )}
+                    </h3>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Route:
+                        </strong>
+
+                        <br>
+
+                        ${escapeHtml(
+                            request.pickupLocation
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            request.destination
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Date:
+                        </strong>
+
+                        ${formatDate(
+                            request.rideDate
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Departure:
+                        </strong>
+
+                        ${formatTime(
+                            request.rideTime
+                        )}
+
+                    </div>
+
+                    ${
+                        request.status === "Pending"
+                            ? `
+
+                                <div class="ride-notes">
+
+                                    Your request is waiting
+                                    for the driver to respond.
+
+                                </div>
+
+                            `
+                            : ""
+                    }
+
+                    ${
+                        request.status === "Accepted"
+                            ? `
+
+                                <div class="confirmed-box">
+
+                                    <strong>
+                                        ✓ Ride Confirmed
+                                    </strong>
+
+                                    <br><br>
+
+                                    Your request has been
+                                    accepted by the driver.
+
+                                </div>
+
+                                <div class="contact-box">
+
+                                    <strong>
+                                        Driver Contact
+                                    </strong>
+
+                                    <br><br>
+
+                                    ${
+                                        request.driverContact
+                                            ? escapeHtml(
+                                                request.driverContact
+                                            )
+                                            : "No contact information provided."
+                                    }
+
+                                </div>
+
+                                ${
+                                    request.fuelPaid
+                                        ? `
+
+                                            <div class="paid-box">
+
+                                                <strong>
+                                                    ✓ Fuel Contribution Paid
+                                                </strong>
+
+                                                <br><br>
+
+                                                R${getRequestFuelAmount(
+                                                    request
+                                                ).toFixed(2)}
+
+                                            </div>
+
+                                        `
+                                        : `
+
+                                            <div class="payment-box">
+
+                                                <strong>
+                                                    Fuel Contribution:
+                                                    R${getRequestFuelAmount(
+                                                        request
+                                                    ).toFixed(2)}
+                                                </strong>
+
+                                                <br><br>
+
+                                                Pay using your
+                                                EduMarket Wallet.
+
+                                                <div class="request-actions">
+
+                                                    <button
+                                                        class="accept-btn"
+                                                        onclick="payFuelContribution(
+                                                            ${request.id}
+                                                        )">
+
+                                                        Pay Fuel Contribution
+
+                                                    </button>
+
+                                                    <button
+                                                        class="cancel-btn"
+                                                        onclick="viewWallet()">
+
+                                                        View Wallet
+
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                        `
+                                }
+
+                            `
+                            : ""
+                    }
+
+                    ${
+                        request.status === "Declined"
+                            ? `
+
+                                <div class="ride-notes">
+
+                                    The driver declined
+                                    this ride request.
+
+                                </div>
+
+                            `
+                            : ""
+                    }
+
+                    ${
+                        request.status === "Cancelled"
+                            ? `
+
+                                <div class="cancelled-box">
+
+                                    This ride was cancelled
+                                    by the driver.
+
+                                </div>
+
+                            `
+                            : ""
+                    }
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        /* =========================================
+           WALLET
+        ========================================== */
+
+        function getWallet() {
+
+            const wallet =
+                JSON.parse(
+                    localStorage.getItem(
+                        "eduMarketWallet"
+                    )
+                );
+
+
+            if (
+                wallet &&
+                typeof wallet === "object"
+            ) {
+
+                if (
+                    !Array.isArray(
+                        wallet.transactions
+                    )
+                ) {
+
+                    wallet.transactions = [];
+
+                }
+
+
+                if (
+                    !Number.isFinite(
+                        Number(wallet.balance)
+                    )
+                ) {
+
+                    wallet.balance = 0;
+
+                }
+
+
+                return wallet;
+
+            }
+
+
+            const newWallet = {
+
+                balance: 0,
+
+                transactions: []
+
+            };
+
+
+            localStorage.setItem(
+                "eduMarketWallet",
+                JSON.stringify(newWallet)
+            );
+
+
+            return newWallet;
+
+        }
+
+
+        function saveWallet(wallet) {
+
+            localStorage.setItem(
+                "eduMarketWallet",
+                JSON.stringify(wallet)
+            );
+
+        }
+
+
+        function viewWallet() {
+
+            closeSections();
+
+
+            document
+                .getElementById(
+                    "walletSection"
+                )
+                .classList.add("active");
+
+
+            loadWallet();
+
+
+            document
+                .getElementById(
+                    "walletSection"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function loadWallet() {
+
+            const wallet =
+                getWallet();
+
+
+            document
+                .getElementById(
+                    "walletBalance"
+                )
+                .textContent =
+                    "R" +
+                    Number(
+                        wallet.balance
+                    ).toFixed(2);
+
+
+            const container =
+                document.getElementById(
+                    "walletTransactions"
+                );
+
+
+            if (
+                !wallet.transactions ||
+                wallet.transactions.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h3>
+                            No transactions yet
+                        </h3>
+
+                        <p>
+                            Add demo funds or pay a
+                            CampusRide fuel contribution.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            const transactions =
+                [...wallet.transactions]
+                    .sort(function(a, b) {
+
+                        return (
+                            new Date(b.createdAt) -
+                            new Date(a.createdAt)
+                        );
+
+                    });
+
+
+            container.innerHTML = "";
+
+
+            transactions.forEach(
+                function(transaction) {
+
+                    const amount =
+                        Number(
+                            transaction.amount
+                        ) || 0;
+
+
+                    const credit =
+                        transaction.type ===
+                        "Credit";
+
+
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    div.className =
+                        "wallet-transaction";
+
+
+                    div.innerHTML = `
+
+                        <strong>
+                            ${escapeHtml(
+                                transaction.description
+                            )}
+                        </strong>
+
+                        <br>
+
+                        <span class="${
+                            credit
+                                ? "wallet-credit"
+                                : "wallet-debit"
+                        }">
+
+                            ${credit ? "+" : "-"}
+
+                            R${amount.toFixed(2)}
+
+                        </span>
+
+                        <br>
+
+                        <small
+                            style="color:#6b7280;">
+
+                            ${new Date(
+                                transaction.createdAt
+                            ).toLocaleString(
+                                "en-ZA"
+                            )}
+
+                        </small>
+
+                    `;
+
+
+                    container.appendChild(div);
+
+                }
+            );
+
+        }
+
+
+        function showAddFunds() {
+
+            document
+                .getElementById(
+                    "addFundsBox"
+                )
+                .style.display =
+                    "block";
+
+        }
+
+
+        function hideAddFunds() {
+
+            document
+                .getElementById(
+                    "addFundsBox"
+                )
+                .style.display =
+                    "none";
+
+
+            document
+                .getElementById(
+                    "addFundsForm"
+                )
+                .reset();
+
+        }
+
+
+        document
+            .getElementById(
+                "addFundsForm"
+            )
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const amount =
+                        Number(
+                            document
+                                .getElementById(
+                                    "walletTopUpAmount"
+                                )
+                                .value
+                        );
+
+
+                    if (
+                        !Number.isFinite(amount) ||
+                        amount <= 0
+                    ) {
+
+                        alert(
+                            "Please enter a valid amount."
+                        );
+
+                        return;
+                    }
+
+
+                    const wallet =
+                        getWallet();
+
+
+                    wallet.balance =
+                        Number(
+                            wallet.balance
+                        ) + amount;
+
+
+                    wallet.transactions.push({
+
+                        id: Date.now(),
+
+                        type: "Credit",
+
+                        amount: amount,
+
+                        description:
+                            "EduMarket Wallet Top-Up",
+
+                        createdAt:
+                            new Date().toISOString()
+
+                    });
+
+
+                    saveWallet(wallet);
+
+
+                    hideAddFunds();
+
+                    loadWallet();
+
+
+                    alert(
+                        "R" +
+                        amount.toFixed(2) +
+                        " added to your demo wallet."
+                    );
+
+                }
+            );
+
+
+        /* =========================================
+           FUEL PAYMENT
+        ========================================== */
+
+        function getRequestFuelAmount(
+            request
+        ) {
+
+            if (
+                request.fuelContribution !==
+                undefined
+            ) {
+
+                return (
+                    Number(
+                        request.fuelContribution
+                    ) || 0
+                );
+
+            }
+
+
+            const rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            const ride =
+                rides.find(function(item) {
+
+                    return (
+                        String(item.id) ===
+                        String(request.rideId)
+                    );
+
+                });
+
+
+            return ride
+                ? Number(
+                    ride.fuelContribution
+                  ) || 0
+                : 0;
+
+        }
+
+
+        function payFuelContribution(
+            requestId
+        ) {
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            const request =
+                requests.find(function(item) {
+
+                    return (
+                        String(item.id) ===
+                        String(requestId)
+                    );
+
+                });
+
+
+            if (!request) {
+
+                alert(
+                    "Ride request could not be found."
+                );
+
+                return;
+            }
+
+
+            if (
+                request.status !==
+                "Accepted"
+            ) {
+
+                alert(
+                    "The driver must accept the ride first."
+                );
+
+                return;
+            }
+
+
+            if (
+                request.fuelPaid === true
+            ) {
+
+                alert(
+                    "Fuel contribution has already been paid."
+                );
+
+                return;
+            }
+
+
+            const amount =
+                getRequestFuelAmount(
+                    request
+                );
+
+
+            if (amount <= 0) {
+
+                alert(
+                    "Invalid fuel contribution amount."
+                );
+
+                return;
+            }
+
+
+            const wallet =
+                getWallet();
+
+
+            if (
+                Number(wallet.balance) <
+                amount
+            ) {
+
+                alert(
+                    "Insufficient wallet funds."
+                );
+
+                viewWallet();
+
+                return;
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Pay R" +
+                    amount.toFixed(2) +
+                    " for the fuel contribution?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            wallet.balance =
+                Number(wallet.balance) -
+                amount;
+
+
+            wallet.transactions.push({
+
+                id: Date.now(),
+
+                type: "Debit",
+
+                amount: amount,
+
+                description:
+                    "CampusRide Fuel Contribution - " +
+                    request.driverName,
+
+                createdAt:
+                    new Date().toISOString()
+
+            });
+
+
+            saveWallet(wallet);
+
+
+            request.fuelPaid =
+                true;
+
+
+            request.fuelPaidAt =
+                new Date().toISOString();
+
+
+            request.fuelPaymentAmount =
+                amount;
+
+
+            localStorage.setItem(
+                "campusRideRequests",
+                JSON.stringify(requests)
+            );
+
+
+            loadMyRequests();
+
+
+            alert(
+                "Fuel contribution paid successfully."
+            );
+
+        }
+
+
+        /* =========================================
+           MANAGE RIDES
+        ========================================== */
+
+        function manageRides() {
+
+            closeSections();
+
+
+            document
+                .getElementById(
+                    "manageRidesSection"
+                )
+                .classList.add("active");
+
+
+            loadManagedRides();
+
+
+            document
+                .getElementById(
+                    "manageRidesSection"
+                )
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function loadManagedRides() {
+
+            const container =
+                document.getElementById(
+                    "manageRidesContainer"
+                );
+
+
+            const rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            if (rides.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty-message">
+
+                        <h3>
+                            You have no rides
+                        </h3>
+
+                        <p>
+                            Create a ride using
+                            "Offer a Ride".
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            rides.sort(function(a, b) {
+
+                return Number(b.id) -
+                       Number(a.id);
+
+            });
+
+
+            container.innerHTML = "";
+
+
+            rides.forEach(function(ride) {
+
+                const requests =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "campusRideRequests"
+                        )
+                    ) || [];
+
+
+                const rideRequests =
+                    requests.filter(
+                        function(request) {
+
+                            return (
+                                String(
+                                    request.rideId
+                                ) ===
+                                String(
+                                    ride.id
+                                )
+                            );
+
+                        }
+                    );
+
+
+                const accepted =
+                    rideRequests.filter(
+                        function(request) {
+
+                            return (
+                                request.status ===
+                                "Accepted"
+                            );
+
+                        }
+                    ).length;
+
+
+                const pending =
+                    rideRequests.filter(
+                        function(request) {
+
+                            return (
+                                request.status ===
+                                "Pending"
+                            );
+
+                        }
+                    ).length;
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "management-card";
+
+
+                card.innerHTML = `
+
+                    <h3>
+
+                        ${escapeHtml(
+                            ride.pickupLocation
+                        )}
+
+                        →
+
+                        ${escapeHtml(
+                            ride.destination
+                        )}
+
+                    </h3>
+
+                    ${
+                        ride.cancelled
+                            ? `
+                                <span class="
+                                    request-status
+                                    status-cancelled
+                                ">
+                                    Cancelled
+                                </span>
+                            `
+                            : ""
+                    }
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Date:
+                        </strong>
+
+                        ${formatDate(
+                            ride.date
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Time:
+                        </strong>
+
+                        ${formatTime(
+                            ride.time
+                        )}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Seats Remaining:
+                        </strong>
+
+                        ${getRemainingSeats(
+                            ride
+                        )}
+
+                        /
+
+                        ${ride.availableSeats}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Accepted Passengers:
+                        </strong>
+
+                        ${accepted}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Pending Requests:
+                        </strong>
+
+                        ${pending}
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Fuel Contribution:
+                        </strong>
+
+                        R${Number(
+                            ride.fuelContribution
+                        ).toFixed(2)}
+
+                        per passenger
+
+                    </div>
+
+                    <div class="ride-info">
+
+                        <strong>
+                            Fuel Paid:
+                        </strong>
+
+                        R${getRidePaidFuelTotal(
+                            ride.id
+                        ).toFixed(2)}
+
+                    </div>
+
+                    <div class="management-actions">
+
+                        ${
+                            !ride.cancelled
+                                ? `
+
+                                    <button
+                                        class="danger-btn"
+                                        onclick="cancelRide(
+                                            ${ride.id}
+                                        )">
+
+                                        Cancel Ride
+
+                                    </button>
+
+                                `
+                                : ""
+                        }
+
+                        <button
+                            class="cancel-btn"
+                            onclick="deleteRide(
+                                ${ride.id}
+                            )">
+
+                            Delete Ride
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+        function getRidePaidFuelTotal(
+            rideId
+        ) {
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            return requests
+                .filter(function(request) {
+
+                    return (
+                        String(
+                            request.rideId
+                        ) ===
+                        String(rideId) &&
+
+                        request.status ===
+                        "Accepted" &&
+
+                        request.fuelPaid ===
+                        true
+                    );
+
+                })
+                .reduce(
+                    function(total, request) {
+
+                        return (
+                            total +
+                            getRequestFuelAmount(
+                                request
+                            )
+                        );
+
+                    },
+                    0
+                );
+
+        }
+
+
+        /* =========================================
+           CANCEL RIDE
+        ========================================== */
+
+        function cancelRide(rideId) {
+
+            const rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            const ride =
+                rides.find(function(item) {
+
+                    return (
+                        String(item.id) ===
+                        String(rideId)
+                    );
+
+                });
+
+
+            if (!ride) {
+
+                alert(
+                    "Ride could not be found."
+                );
+
+                return;
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to cancel this ride?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            ride.cancelled =
+                true;
+
+
+            ride.cancelledAt =
+                new Date().toISOString();
+
+
+            localStorage.setItem(
+                "campusRides",
+                JSON.stringify(rides)
+            );
+
+
+            const requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            requests.forEach(
+                function(request) {
+
+                    if (
+                        String(
+                            request.rideId
+                        ) ===
+                        String(rideId)
+                    ) {
+
+                        if (
+                            request.status ===
+                            "Pending" ||
+
+                            request.status ===
+                            "Accepted"
+                        ) {
+
+                            request.status =
+                                "Cancelled";
+
+                            request.updatedAt =
+                                new Date().toISOString();
+
+                        }
+
+                    }
+
+                }
+            );
+
+
+            localStorage.setItem(
+                "campusRideRequests",
+                JSON.stringify(requests)
+            );
+
+
+            loadManagedRides();
+
+        }
+
+
+        /* =========================================
+           DELETE RIDE
+        ========================================== */
+
+        function deleteRide(rideId) {
+
+            const confirmed =
+                confirm(
+                    "Permanently delete this ride and its requests?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            let rides =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRides"
+                    )
+                ) || [];
+
+
+            rides =
+                rides.filter(
+                    function(ride) {
+
+                        return (
+                            String(
+                                ride.id
+                            ) !==
+                            String(
+                                rideId
+                            )
+                        );
+
+                    }
+                );
+
+
+            localStorage.setItem(
+                "campusRides",
+                JSON.stringify(rides)
+            );
+
+
+            let requests =
+                JSON.parse(
+                    localStorage.getItem(
+                        "campusRideRequests"
+                    )
+                ) || [];
+
+
+            requests =
+                requests.filter(
+                    function(request) {
+
+                        return (
+                            String(
+                                request.rideId
+                            ) !==
+                            String(
+                                rideId
+                            )
+                        );
+
+                    }
+                );
+
+
+            localStorage.setItem(
+                "campusRideRequests",
+                JSON.stringify(requests)
+            );
+
+
+            loadManagedRides();
+
+        }
+
+
+        /* =========================================
+           DATE / TIME
+        ========================================== */
+
+        function formatDate(
+            dateString
+        ) {
+
+            if (!dateString) {
+                return "Not specified";
+            }
+
+
+            const date =
+                new Date(
+                    dateString +
+                    "T00:00:00"
+                );
+
+
+            return date.toLocaleDateString(
+                "en-ZA",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        function formatTime(
+            timeString
+        ) {
+
+            if (!timeString) {
+                return "Not specified";
+            }
+
+
+            const parts =
+                timeString.split(":");
+
+
+            let hours =
+                Number(parts[0]);
+
+
+            const minutes =
+                parts[1] || "00";
+
+
+            const suffix =
+                hours >= 12
+                    ? "PM"
+                    : "AM";
+
+
+            hours =
+                hours % 12;
+
+
+            if (hours === 0) {
+                hours = 12;
+            }
+
+
+            return (
+                hours +
+                ":" +
+                minutes +
+                " " +
+                suffix
+            );
+
+        }
+
+
+        /* =========================================
+           HTML ESCAPING
+        ========================================== */
+
+        function escapeHtml(value) {
+
+            return String(
+                value ?? ""
+            )
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+        }
+
+
+        /* =========================================
+           INITIAL PAGE SETUP
+        ========================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                const today =
+                    new Date()
+                        .toISOString()
+                        .split("T")[0];
+
+
+                const rideDate =
+                    document.getElementById(
+                        "rideDate"
+                    );
+
+
+                const searchDate =
+                    document.getElementById(
+                        "searchDate"
+                    );
+
+
+                if (rideDate) {
+
+                    rideDate.min =
+                        today;
+
+                }
+
+
+                if (searchDate) {
+
+                    searchDate.min =
+                        today;
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

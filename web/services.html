@@ -1,0 +1,2995 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>EduMarket | Student Services</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+    /* =========================================
+       EDUMARKET SERVICES PAGE
+       ========================================= */
+
+    .services-page {
+        padding: 40px 6%;
+        background: #f7f9fc;
+        min-height: calc(100vh - 80px);
+    }
+
+    .services-hero {
+        background: linear-gradient(135deg, #111827, #2563eb);
+        color: white;
+        border-radius: 18px;
+        padding: 45px;
+        margin-bottom: 30px;
+    }
+
+    .services-hero h1 {
+        font-size: 38px;
+        margin-bottom: 12px;
+    }
+
+    .services-hero p {
+        max-width: 700px;
+        line-height: 1.7;
+        opacity: 0.92;
+    }
+
+    .services-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .service-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .service-btn.primary {
+        background: white;
+        color: #2563eb;
+    }
+
+    .service-btn.secondary {
+        background: rgba(255,255,255,0.15);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .services-section {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    }
+
+    .services-section h2 {
+        margin-bottom: 18px;
+        color: #111827;
+    }
+
+    .service-filters {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 14px;
+    }
+
+    .service-filters input,
+    .service-filters select,
+    .service-form input,
+    .service-form select,
+    .service-form textarea,
+    .request-form input,
+    .request-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .service-filters input:focus,
+    .service-filters select:focus,
+    .service-form input:focus,
+    .service-form select:focus,
+    .service-form textarea:focus,
+    .request-form input:focus,
+    .request-form textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .service-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        overflow: hidden;
+        background: white;
+        transition: 0.2s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .service-card-top {
+        background: #eff6ff;
+        padding: 25px;
+        font-size: 42px;
+        text-align: center;
+    }
+
+    .service-card-body {
+        padding: 20px;
+    }
+
+    .service-card h3 {
+        margin: 0 0 8px;
+        color: #111827;
+    }
+
+    .service-description {
+        color: #6b7280;
+        line-height: 1.5;
+        font-size: 14px;
+        min-height: 63px;
+    }
+
+    .service-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 15px 0;
+        font-size: 13px;
+        color: #4b5563;
+    }
+
+    .service-price {
+        font-size: 19px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    .service-provider {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 14px;
+    }
+
+    .view-service-btn,
+    .submit-service-btn,
+    .request-service-btn {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        padding: 11px;
+        background: #2563eb;
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .view-service-btn:hover,
+    .submit-service-btn:hover,
+    .request-service-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .request-service-btn {
+        margin-top: 10px;
+        background: #111827;
+    }
+
+    .request-service-btn:hover {
+        background: #1f2937;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group.full {
+        grid-column: 1 / -1;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 600;
+        font-size: 14px;
+        color: #374151;
+    }
+
+    .service-form textarea,
+    .request-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .cancel-service-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 11px 18px;
+        background: #e5e7eb;
+        color: #374151;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .empty-services {
+        text-align: center;
+        padding: 35px;
+        color: #6b7280;
+        border: 1px dashed #d1d5db;
+        border-radius: 12px;
+    }
+
+    .service-detail {
+        line-height: 1.7;
+        color: #4b5563;
+    }
+
+    .service-detail strong {
+        color: #111827;
+    }
+
+    .request-box {
+        margin-top: 25px;
+        padding: 22px;
+        background: #f8fafc;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+    }
+
+    .request-box h3 {
+        margin-bottom: 8px;
+        color: #111827;
+    }
+
+    .request-box p {
+        color: #6b7280;
+        margin-bottom: 20px;
+    }
+
+    .request-success {
+        padding: 18px;
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        border-radius: 10px;
+        color: #065f46;
+        margin-top: 20px;
+    }
+
+    /* =========================================
+       EDUMARKET + EDUVOS BRANDING
+       ========================================= */
+
+    .brand-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .eduvos-logo {
+        height: 90px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+    }
+
+    @media (max-width: 650px) {
+        .brand-wrapper {
+            gap: 8px;
+        }
+
+        .eduvos-logo {
+            height: 60px;
+        }
+    }
+
+
+    /* =========================================
+       PAYMENT SECTION
+       ========================================= */
+
+    .payment-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 15px;
+        background: #ffffff;
+    }
+
+    .payment-card.required {
+        border-left: 5px solid #f59e0b;
+    }
+
+    .payment-card.paid {
+        border-left: 5px solid #10b981;
+    }
+
+    .payment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .payment-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 5px;
+    }
+
+    .payment-provider {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .payment-amount {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2563eb;
+        white-space: nowrap;
+    }
+
+    .payment-details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .payment-detail-box {
+        background: #f8fafc;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .payment-detail-box span {
+        display: block;
+        font-size: 12px;
+        color: #6b7280;
+        margin-bottom: 4px;
+    }
+
+    .payment-detail-box strong {
+        color: #111827;
+        font-size: 14px;
+    }
+
+    .payment-status {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .payment-status.required {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .payment-status.paid {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .pay-now-btn {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        padding: 13px;
+        background: #10b981;
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .pay-now-btn:hover {
+        background: #059669;
+    }
+
+    .wallet-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .wallet-summary-label {
+        color: #6b7280;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    .wallet-summary-balance {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    .wallet-link-btn {
+        border: none;
+        border-radius: 8px;
+        padding: 11px 18px;
+        background: #2563eb;
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .wallet-link-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .payment-empty {
+        text-align: center;
+        padding: 35px;
+        border: 1px dashed #d1d5db;
+        border-radius: 12px;
+        color: #6b7280;
+    }
+
+    .payment-note {
+        margin-top: 15px;
+        padding: 12px 15px;
+        background: #f8fafc;
+        border-radius: 8px;
+        color: #6b7280;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .service-filters {
+            grid-template-columns: 1fr;
+        }
+
+        .payment-details {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 650px) {
+
+        .services-page {
+            padding: 25px 4%;
+        }
+
+        .services-hero {
+            padding: 30px 22px;
+        }
+
+        .services-hero h1 {
+            font-size: 30px;
+        }
+
+        .services-grid,
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full {
+            grid-column: auto;
+        }
+
+        .payment-header {
+            flex-direction: column;
+        }
+
+        .payment-details {
+            grid-template-columns: 1fr;
+        }
+
+        .wallet-summary {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="brand-wrapper">
+
+        <div class="logo">
+            EduMarket
+        </div>
+
+        <img
+            src="images/eduvos.png"
+            alt="Eduvos Logo"
+            class="eduvos-logo"
+        >
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="marketplace.html">
+            Marketplace
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="opportunities.html">
+            Opportunities
+        </a>
+
+        <a href="campusride.html">
+            CampusRide
+        </a>
+
+        <a href="seller-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="wallet.html">
+            Wallet
+        </a>
+
+        <a href="login.html">
+            Login
+        </a>
+
+        <a href="register.html">
+            Register
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="services-page">
+
+    <!-- HERO -->
+    <section class="services-hero">
+
+        <h1>
+            Student Services
+        </h1>
+
+        <p>
+            Find affordable services offered by Eduvos students.
+            Get help with academics, technology, design, transport,
+            creative work and everyday student needs.
+        </p>
+
+        <div class="services-actions">
+
+            <button
+                class="service-btn primary"
+                onclick="showServices()">
+
+                Find a Service
+
+            </button>
+
+            <button
+                class="service-btn secondary"
+                onclick="showOfferService()">
+
+                Offer a Service
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICE LIST -->
+    <section
+        id="servicesSection"
+        class="services-section">
+
+        <h2>
+            Find a Service
+        </h2>
+
+        <div class="service-filters">
+
+            <input
+                type="text"
+                id="serviceSearch"
+                placeholder="Search services..."
+                oninput="filterServices()">
+
+
+            <select
+                id="serviceCategory"
+                onchange="filterServices()">
+
+                <option value="">
+                    All Categories
+                </option>
+
+                <option value="Tutoring">Tutoring</option>
+                <option value="Assignment Support">Assignment Support</option>
+                <option value="Web Development">Web Development</option>
+                <option value="App Development">App Development</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Presentation Design">Presentation Design</option>
+                <option value="CV & LinkedIn">CV & LinkedIn</option>
+                <option value="Tech Support">Tech Support</option>
+                <option value="Laptop & PC Repair">Laptop & PC Repair</option>
+                <option value="Photography">Photography</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Printing & Custom Design">Printing & Custom Design</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Accommodation">Accommodation</option>
+                <option value="Event Services">Event Services</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+
+            <select
+                id="serviceCampus"
+                onchange="filterServices()">
+
+                <option value="">
+                    All Campuses
+                </option>
+
+                <option value="Pretoria">Pretoria</option>
+                <option value="Midrand">Midrand</option>
+                <option value="Cape Town">Cape Town</option>
+                <option value="Johannesburg">Johannesburg</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            id="servicesGrid"
+            class="services-grid"
+            style="margin-top:25px;">
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MY SERVICE PAYMENTS
+         ========================================= -->
+
+    <section
+        id="paymentsSection"
+        class="services-section">
+
+        <h2>
+            My Service Payments
+        </h2>
+
+        <p style="color:#6b7280; margin-bottom:20px;">
+            When a service provider completes your job,
+            your payment will appear here.
+        </p>
+
+
+        <div class="wallet-summary">
+
+            <div>
+
+                <div class="wallet-summary-label">
+                    Available EduMarket Wallet Balance
+                </div>
+
+                <div
+                    id="buyerWalletBalance"
+                    class="wallet-summary-balance">
+
+                    R0.00
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="wallet-link-btn"
+                onclick="window.location.href='wallet.html'">
+
+                Open Wallet
+
+            </button>
+
+        </div>
+
+
+        <div id="paymentsContainer">
+
+            <div class="payment-empty">
+                No service payments yet.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OFFER SERVICE -->
+    <section
+        id="offerServiceSection"
+        class="services-section"
+        style="display:none;">
+
+        <h2>
+            Offer a Service
+        </h2>
+
+        <p style="color:#6b7280; margin-bottom:20px;">
+            Add your service so other Eduvos students
+            can find and contact you.
+        </p>
+
+
+        <form
+            id="serviceForm"
+            class="service-form">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="serviceTitle">
+                        Service Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="serviceTitle"
+                        placeholder="Example: Python Tutoring"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="serviceProvider">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="serviceProvider"
+                        placeholder="Example: Student Name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="serviceCategoryInput">
+                        Category
+                    </label>
+
+                    <select
+                        id="serviceCategoryInput"
+                        required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Tutoring">Tutoring</option>
+                        <option value="Assignment Support">Assignment Support</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="App Development">App Development</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="Presentation Design">Presentation Design</option>
+                        <option value="CV & LinkedIn">CV & LinkedIn</option>
+                        <option value="Tech Support">Tech Support</option>
+                        <option value="Laptop & PC Repair">Laptop & PC Repair</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Printing & Custom Design">Printing & Custom Design</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Accommodation">Accommodation</option>
+                        <option value="Event Services">Event Services</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="serviceCampusInput">
+                        Campus
+                    </label>
+
+                    <select
+                        id="serviceCampusInput"
+                        required>
+
+                        <option value="">
+                            Select campus
+                        </option>
+
+                        <option value="Pretoria">Pretoria</option>
+                        <option value="Midrand">Midrand</option>
+                        <option value="Cape Town">Cape Town</option>
+                        <option value="Johannesburg">Johannesburg</option>
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="servicePrice">
+                        Price (R)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="servicePrice"
+                        min="0"
+                        step="1"
+                        placeholder="Example: 150"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="servicePriceType">
+                        Pricing Type
+                    </label>
+
+                    <select
+                        id="servicePriceType"
+                        required>
+
+                        <option value="Once-off">Once-off</option>
+                        <option value="Per Hour">Per Hour</option>
+                        <option value="Per Session">Per Session</option>
+                        <option value="Per Project">Per Project</option>
+                        <option value="Per Trip">Per Trip</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="serviceDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="serviceDescription"
+                        placeholder="Explain what your service includes..."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="serviceContact">
+                        Contact Information
+                    </label>
+
+                    <input
+                        type="text"
+                        id="serviceContact"
+                        placeholder="Phone number or email"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="submit-service-btn">
+
+                    Publish Service
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="cancel-service-btn"
+                    onclick="showServices()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- SERVICE DETAILS -->
+    <section
+        id="serviceDetailsSection"
+        class="services-section"
+        style="display:none;">
+
+        <h2 id="serviceDetailsTitle">
+            Service Details
+        </h2>
+
+
+        <div
+            id="serviceDetails"
+            class="service-detail">
+        </div>
+
+
+        <div
+            id="requestServiceBox"
+            class="request-box"
+            style="display:none;">
+
+            <h3>
+                Request This Service
+            </h3>
+
+            <p>
+                Send a request to the service provider.
+                Your request will be saved in EduMarket.
+            </p>
+
+
+            <form
+                id="requestServiceForm"
+                class="request-form">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="requestName">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="requestName"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="requestContact">
+                            Contact Information
+                        </label>
+
+                        <input
+                            type="text"
+                            id="requestContact"
+                            placeholder="Phone number or email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="requestDate">
+                            Preferred Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="requestDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="requestBudget">
+                            Your Budget (R)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="requestBudget"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 150"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="requestMessage">
+                            What do you need?
+                        </label>
+
+                        <textarea
+                            id="requestMessage"
+                            placeholder="Explain what you need from the service provider..."
+                            required></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="submit"
+                        class="submit-service-btn">
+
+                        Send Service Request
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-service-btn"
+                        onclick="closeRequestForm()">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <div
+                id="requestSuccess"
+                class="request-success"
+                style="display:none;">
+            </div>
+
+        </div>
+
+
+        <div style="margin-top:20px;">
+
+            <button
+                id="requestButton"
+                class="request-service-btn"
+                onclick="openRequestForm()">
+
+                Request This Service
+
+            </button>
+
+
+            <button
+                class="cancel-service-btn"
+                onclick="showServices()"
+                style="margin-top:10px;">
+
+                Back to Services
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+    /* =========================================
+       DEFAULT SERVICES
+       ========================================= */
+
+    const defaultServices = [
+
+        {
+            id: 1,
+            title: "Python Tutoring",
+            provider: "Eduvos Student",
+            category: "Tutoring",
+            campus: "Pretoria",
+            price: 100,
+            priceType: "Per Hour",
+            description: "Beginner-friendly Python tutoring for students who need help understanding programming concepts.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 2,
+            title: "Website Development",
+            provider: "Computer Science Student",
+            category: "Web Development",
+            campus: "Pretoria",
+            price: 500,
+            priceType: "Once-off",
+            description: "Student-focused website development for portfolios, small businesses and university projects.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 3,
+            title: "Graphic Design",
+            provider: "Creative Student",
+            category: "Graphic Design",
+            campus: "Midrand",
+            price: 150,
+            priceType: "Per Session",
+            description: "Posters, presentations, social media graphics and other student design work.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 4,
+            title: "Java Tutoring",
+            provider: "Software Development Student",
+            category: "Tutoring",
+            campus: "Pretoria",
+            price: 120,
+            priceType: "Per Hour",
+            description: "Java programming support covering OOP, classes, objects, inheritance and practical coding.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 5,
+            title: "Assignment Study Support",
+            provider: "Academic Support Student",
+            category: "Assignment Support",
+            campus: "Cape Town",
+            price: 100,
+            priceType: "Per Session",
+            description: "Study guidance, research assistance, planning and help understanding difficult academic topics.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 6,
+            title: "Mobile App Development",
+            provider: "Software Developer",
+            category: "App Development",
+            campus: "Johannesburg",
+            price: 750,
+            priceType: "Per Project",
+            description: "Development of simple mobile applications and student prototype projects.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 7,
+            title: "CV Design",
+            provider: "Business Student",
+            category: "CV & LinkedIn",
+            campus: "Pretoria",
+            price: 100,
+            priceType: "Once-off",
+            description: "Professional student CV formatting and design for internships, graduate jobs and part-time work.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 8,
+            title: "LinkedIn Profile Setup",
+            provider: "Marketing Student",
+            category: "CV & LinkedIn",
+            campus: "Midrand",
+            price: 150,
+            priceType: "Per Session",
+            description: "Help setting up and improving your LinkedIn profile, headline, skills and student portfolio.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 9,
+            title: "Presentation Design",
+            provider: "Creative Student",
+            category: "Presentation Design",
+            campus: "Pretoria",
+            price: 180,
+            priceType: "Per Project",
+            description: "Clean and professional PowerPoint presentations for student projects and presentations.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 10,
+            title: "Laptop Software Setup",
+            provider: "IT Student",
+            category: "Tech Support",
+            campus: "Pretoria",
+            price: 100,
+            priceType: "Per Session",
+            description: "Help installing development tools, software, drivers and common student applications.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 11,
+            title: "Laptop & PC Repair",
+            provider: "Computer Technician Student",
+            category: "Laptop & PC Repair",
+            campus: "Johannesburg",
+            price: 250,
+            priceType: "Per Session",
+            description: "Basic laptop and PC troubleshooting, diagnostics and software-related repairs.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 12,
+            title: "Student Photography",
+            provider: "Photography Student",
+            category: "Photography",
+            campus: "Cape Town",
+            price: 300,
+            priceType: "Per Session",
+            description: "Affordable photography for student events, portraits, birthdays and campus activities.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 13,
+            title: "Video Editing",
+            provider: "Creative Media Student",
+            category: "Video Editing",
+            campus: "Pretoria",
+            price: 250,
+            priceType: "Per Project",
+            description: "Short-form video editing for social media, student projects, events and promotional content.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 14,
+            title: "Social Media Management",
+            provider: "Digital Marketing Student",
+            category: "Social Media",
+            campus: "Midrand",
+            price: 300,
+            priceType: "Per Project",
+            description: "Social media content planning, post creation and basic account management for student businesses.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 15,
+            title: "Custom Poster Printing",
+            provider: "Creative Student",
+            category: "Printing & Custom Design",
+            campus: "Pretoria",
+            price: 80,
+            priceType: "Once-off",
+            description: "Custom poster and flyer designs suitable for student events, businesses and societies.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 16,
+            title: "Campus Transport",
+            provider: "Eduvos Student Driver",
+            category: "Transportation",
+            campus: "Pretoria",
+            price: 50,
+            priceType: "Per Trip",
+            description: "Student transport around campus and nearby areas. Fuel contribution applies.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 17,
+            title: "Event DJ Services",
+            provider: "Student DJ",
+            category: "Event Services",
+            campus: "Johannesburg",
+            price: 600,
+            priceType: "Per Project",
+            description: "DJ services for student events, birthdays, small parties and campus functions.",
+            contact: "student@example.com"
+        },
+
+        {
+            id: 18,
+            title: "Accommodation Assistance",
+            provider: "Eduvos Student",
+            category: "Accommodation",
+            campus: "Cape Town",
+            price: 100,
+            priceType: "Per Session",
+            description: "Help finding student accommodation, comparing options and understanding rental requirements.",
+            contact: "student@example.com"
+        }
+
+    ];
+
+
+    /* =========================================
+       GET SERVICES
+       ========================================= */
+
+    function getServices() {
+
+        let stored = JSON.parse(
+            localStorage.getItem("eduMarketServices")
+        );
+
+
+        if (!Array.isArray(stored)) {
+
+            stored = [...defaultServices];
+
+            localStorage.setItem(
+                "eduMarketServices",
+                JSON.stringify(stored)
+            );
+
+            return stored;
+        }
+
+
+        const existingIds =
+            new Set(
+                stored.map(function(service) {
+                    return String(service.id);
+                })
+            );
+
+
+        defaultServices.forEach(function(service) {
+
+            if (!existingIds.has(String(service.id))) {
+
+                stored.push(service);
+
+            }
+
+        });
+
+
+        localStorage.setItem(
+            "eduMarketServices",
+            JSON.stringify(stored)
+        );
+
+
+        return stored;
+    }
+
+
+    /* =========================================
+       ICONS
+       ========================================= */
+
+    function getServiceIcon(category) {
+
+        const icons = {
+
+            "Tutoring": "📚",
+            "Assignment Support": "📝",
+            "Web Development": "💻",
+            "App Development": "📱",
+            "Graphic Design": "🎨",
+            "Presentation Design": "📊",
+            "CV & LinkedIn": "💼",
+            "Tech Support": "🛠️",
+            "Laptop & PC Repair": "🔧",
+            "Photography": "📸",
+            "Video Editing": "🎬",
+            "Social Media": "📲",
+            "Printing & Custom Design": "🖨️",
+            "Transportation": "🚗",
+            "Accommodation": "🏠",
+            "Event Services": "🎉",
+            "Other": "⭐"
+
+        };
+
+        return icons[category] || "⭐";
+    }
+
+
+    /* =========================================
+       DISPLAY SERVICES
+       ========================================= */
+
+    function loadServices(serviceList = null) {
+
+        const grid =
+            document.getElementById("servicesGrid");
+
+
+        const services =
+            serviceList || getServices();
+
+
+        if (services.length === 0) {
+
+            grid.innerHTML = `
+                <div class="empty-services"
+                     style="grid-column:1/-1;">
+                    No services found.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        grid.innerHTML = "";
+
+
+        services.forEach(function(service) {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "service-card";
+
+
+            card.innerHTML = `
+
+                <div class="service-card-top">
+                    ${getServiceIcon(service.category)}
+                </div>
+
+                <div class="service-card-body">
+
+                    <h3>
+                        ${escapeHtml(service.title)}
+                    </h3>
+
+                    <div class="service-provider">
+
+                        Offered by
+
+                        <strong>
+                            ${escapeHtml(service.provider)}
+                        </strong>
+
+                    </div>
+
+                    <p class="service-description">
+
+                        ${escapeHtml(service.description)}
+
+                    </p>
+
+
+                    <div class="service-meta">
+
+                        <span>
+                            ${escapeHtml(service.category)}
+                        </span>
+
+                        <span>
+                            ${escapeHtml(service.campus)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="service-price">
+
+                        R${Number(service.price).toFixed(2)}
+
+                        <span style="
+                            font-size:12px;
+                            font-weight:400;
+                            color:#6b7280;">
+
+                            / ${escapeHtml(service.priceType)}
+
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="view-service-btn"
+                        style="margin-top:15px;"
+                        onclick="viewService(${service.id})">
+
+                        View Service
+
+                    </button>
+
+                </div>
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+    }
+
+
+    /* =========================================
+       SEARCH + FILTER
+       ========================================= */
+
+    function filterServices() {
+
+        const search =
+            document
+                .getElementById("serviceSearch")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const category =
+            document
+                .getElementById("serviceCategory")
+                .value;
+
+
+        const campus =
+            document
+                .getElementById("serviceCampus")
+                .value;
+
+
+        const services =
+            getServices();
+
+
+        const filtered =
+            services.filter(function(service) {
+
+                const searchText =
+                    (
+                        service.title +
+                        " " +
+                        service.description +
+                        " " +
+                        service.provider +
+                        " " +
+                        service.category
+                    )
+                    .toLowerCase();
+
+
+                const searchMatch =
+                    search === "" ||
+                    searchText.includes(search);
+
+
+                const categoryMatch =
+                    category === "" ||
+                    service.category === category;
+
+
+                const campusMatch =
+                    campus === "" ||
+                    service.campus === campus;
+
+
+                return (
+                    searchMatch &&
+                    categoryMatch &&
+                    campusMatch
+                );
+
+            });
+
+
+        loadServices(filtered);
+    }
+
+
+    /* =========================================
+       PAGE SECTIONS
+       ========================================= */
+
+    function hideAllSections() {
+
+        document
+            .getElementById("servicesSection")
+            .style.display = "none";
+
+
+        document
+            .getElementById("offerServiceSection")
+            .style.display = "none";
+
+
+        document
+            .getElementById("serviceDetailsSection")
+            .style.display = "none";
+    }
+
+
+    function showServices() {
+
+        hideAllSections();
+
+
+        document
+            .getElementById("servicesSection")
+            .style.display = "block";
+
+
+        loadServices();
+
+
+        document
+            .getElementById("servicesSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+
+
+    function showOfferService() {
+
+        hideAllSections();
+
+
+        document
+            .getElementById("offerServiceSection")
+            .style.display = "block";
+
+
+        document
+            .getElementById("offerServiceSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+
+
+    /* =========================================
+       VIEW SERVICE
+       ========================================= */
+
+    let selectedServiceId = null;
+
+
+    function viewService(serviceId) {
+
+        const services =
+            getServices();
+
+
+        const service =
+            services.find(function(item) {
+
+                return String(item.id) ===
+                    String(serviceId);
+
+            });
+
+
+        if (!service) {
+
+            alert(
+                "Service could not be found."
+            );
+
+            return;
+        }
+
+
+        selectedServiceId =
+            service.id;
+
+
+        hideAllSections();
+
+
+        document
+            .getElementById("serviceDetailsSection")
+            .style.display = "block";
+
+
+        document
+            .getElementById("serviceDetailsTitle")
+            .textContent =
+            service.title;
+
+
+        document
+            .getElementById("serviceDetails")
+            .innerHTML = `
+
+                <p>
+                    <strong>Provider:</strong>
+                    ${escapeHtml(service.provider)}
+                </p>
+
+                <p>
+                    <strong>Category:</strong>
+                    ${escapeHtml(service.category)}
+                </p>
+
+                <p>
+                    <strong>Campus:</strong>
+                    ${escapeHtml(service.campus)}
+                </p>
+
+                <p>
+                    <strong>Price:</strong>
+                    R${Number(service.price).toFixed(2)}
+                    / ${escapeHtml(service.priceType)}
+                </p>
+
+                <p>
+                    <strong>Description:</strong>
+                    ${escapeHtml(service.description)}
+                </p>
+
+                <div style="
+                    margin-top:20px;
+                    padding:15px;
+                    background:#eff6ff;
+                    border-radius:10px;">
+
+                    <strong>
+                        Provider Contact
+                    </strong>
+
+                    <p style="margin-top:8px;">
+                        ${escapeHtml(service.contact)}
+                    </p>
+
+                </div>
+            `;
+
+
+        document
+            .getElementById("requestServiceBox")
+            .style.display = "none";
+
+
+        document
+            .getElementById("requestButton")
+            .style.display = "block";
+
+
+        document
+            .getElementById("requestSuccess")
+            .style.display = "none";
+
+
+        document
+            .getElementById("requestServiceForm")
+            .reset();
+
+
+        document
+            .getElementById("serviceDetailsSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+
+
+    /* =========================================
+       OPEN REQUEST FORM
+       ========================================= */
+
+    function openRequestForm() {
+
+        document
+            .getElementById("requestServiceBox")
+            .style.display = "block";
+
+
+        document
+            .getElementById("requestButton")
+            .style.display = "none";
+
+
+        document
+            .getElementById("requestServiceBox")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    }
+
+
+    /* =========================================
+       CLOSE REQUEST FORM
+       ========================================= */
+
+    function closeRequestForm() {
+
+        document
+            .getElementById("requestServiceBox")
+            .style.display = "none";
+
+
+        document
+            .getElementById("requestButton")
+            .style.display = "block";
+
+
+        document
+            .getElementById("requestSuccess")
+            .style.display = "none";
+    }
+
+
+    /* =========================================
+       SUBMIT SERVICE REQUEST
+       ========================================= */
+
+    document
+        .getElementById("requestServiceForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const services =
+                    getServices();
+
+
+                const service =
+                    services.find(function(item) {
+
+                        return String(item.id) ===
+                            String(selectedServiceId);
+
+                    });
+
+
+                if (!service) {
+
+                    alert(
+                        "The selected service could not be found."
+                    );
+
+                    return;
+                }
+
+
+                const requesterName =
+                    document
+                        .getElementById("requestName")
+                        .value
+                        .trim();
+
+
+                const requesterContact =
+                    document
+                        .getElementById("requestContact")
+                        .value
+                        .trim();
+
+
+                /*
+                 * Save the current buyer identity.
+                 *
+                 * This allows the payment section
+                 * to know which student is the buyer.
+                 */
+
+                localStorage.setItem(
+                    "eduMarketCurrentBuyer",
+                    JSON.stringify({
+
+                        name: requesterName,
+
+                        contact: requesterContact
+
+                    })
+                );
+
+
+                const request = {
+
+                    id: Date.now(),
+
+                    serviceId:
+                        service.id,
+
+                    serviceTitle:
+                        service.title,
+
+                    provider:
+                        service.provider,
+
+                    providerContact:
+                        service.contact,
+
+                    requesterName:
+                        requesterName,
+
+                    requesterContact:
+                        requesterContact,
+
+                    requestedDate:
+                        document
+                            .getElementById("requestDate")
+                            .value,
+
+                    budget:
+                        Number(
+                            document
+                                .getElementById("requestBudget")
+                                .value
+                        ),
+
+                    message:
+                        document
+                            .getElementById("requestMessage")
+                            .value
+                            .trim(),
+
+                    status:
+                        "Pending",
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                const existingRequests =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "eduMarketServiceRequests"
+                        )
+                    ) || [];
+
+
+                existingRequests.push(request);
+
+
+                localStorage.setItem(
+                    "eduMarketServiceRequests",
+                    JSON.stringify(existingRequests)
+                );
+
+
+                document
+                    .getElementById("requestSuccess")
+                    .innerHTML = `
+
+                        <strong>
+                            Service request sent successfully!
+                        </strong>
+
+                        <p style="margin-top:8px;">
+                            Your request for
+                            <strong>
+                                ${escapeHtml(service.title)}
+                            </strong>
+                            has been saved.
+                        </p>
+
+                        <p style="margin-top:5px;">
+                            The provider can now review
+                            your request and contact you.
+                        </p>
+
+                    `;
+
+
+                document
+                    .getElementById("requestSuccess")
+                    .style.display = "block";
+
+
+                document
+                    .getElementById("requestServiceForm")
+                    .reset();
+
+
+                loadPayments();
+            }
+        );
+
+
+    /* =========================================
+       CREATE SERVICE
+       ========================================= */
+
+    document
+        .getElementById("serviceForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const service = {
+
+                    id: Date.now(),
+
+                    title:
+                        document
+                            .getElementById("serviceTitle")
+                            .value
+                            .trim(),
+
+                    provider:
+                        document
+                            .getElementById("serviceProvider")
+                            .value
+                            .trim(),
+
+                    category:
+                        document
+                            .getElementById("serviceCategoryInput")
+                            .value,
+
+                    campus:
+                        document
+                            .getElementById("serviceCampusInput")
+                            .value,
+
+                    price:
+                        Number(
+                            document
+                                .getElementById("servicePrice")
+                                .value
+                        ),
+
+                    priceType:
+                        document
+                            .getElementById("servicePriceType")
+                            .value,
+
+                    description:
+                        document
+                            .getElementById("serviceDescription")
+                            .value
+                            .trim(),
+
+                    contact:
+                        document
+                            .getElementById("serviceContact")
+                            .value
+                            .trim(),
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                const services =
+                    getServices();
+
+
+                services.push(service);
+
+
+                localStorage.setItem(
+                    "eduMarketServices",
+                    JSON.stringify(services)
+                );
+
+
+                alert(
+                    "Your service has been published successfully!"
+                );
+
+
+                document
+                    .getElementById("serviceForm")
+                    .reset();
+
+
+                showServices();
+
+            }
+        );
+
+
+    /* =========================================
+       BUYER WALLET
+       ========================================= */
+
+    function getBuyerWalletBalance() {
+
+        const stored =
+            localStorage.getItem(
+                "eduMarketWalletBalance"
+            );
+
+
+        if (stored === null) {
+
+            localStorage.setItem(
+                "eduMarketWalletBalance",
+                "1500"
+            );
+
+            return 1500;
+        }
+
+
+        const balance =
+            Number(stored);
+
+
+        return Number.isFinite(balance)
+            ? balance
+            : 0;
+    }
+
+
+    function updateBuyerWalletDisplay() {
+
+        const balance =
+            getBuyerWalletBalance();
+
+
+        const element =
+            document.getElementById(
+                "buyerWalletBalance"
+            );
+
+
+        if (element) {
+
+            element.textContent =
+                "R" + balance.toFixed(2);
+
+        }
+    }
+
+
+    /* =========================================
+       SELLER WALLET
+       ========================================= */
+
+    function getSellerWalletKey(provider) {
+
+        const cleanProvider =
+            String(provider || "seller")
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "_")
+                .replace(/^_+|_+$/g, "");
+
+
+        return (
+            "eduMarketSellerWallet_" +
+            cleanProvider
+        );
+    }
+
+
+    function getSellerWalletBalance(provider) {
+
+        const key =
+            getSellerWalletKey(provider);
+
+
+        const stored =
+            localStorage.getItem(key);
+
+
+        if (stored === null) {
+
+            localStorage.setItem(
+                key,
+                "0"
+            );
+
+            return 0;
+        }
+
+
+        const balance =
+            Number(stored);
+
+
+        return Number.isFinite(balance)
+            ? balance
+            : 0;
+    }
+
+
+    /* =========================================
+       TRANSACTION HISTORY
+       ========================================= */
+
+    function getTransactions() {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "eduMarketTransactions"
+            )
+        ) || [];
+    }
+
+
+    function saveTransaction(transaction) {
+
+        const transactions =
+            getTransactions();
+
+
+        transactions.push(transaction);
+
+
+        localStorage.setItem(
+            "eduMarketTransactions",
+            JSON.stringify(transactions)
+        );
+    }
+
+
+    /* =========================================
+       GET CURRENT BUYER
+       ========================================= */
+
+    function getCurrentBuyer() {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "eduMarketCurrentBuyer"
+            )
+        );
+    }
+
+
+    /* =========================================
+       LOAD PAYMENTS
+       ========================================= */
+
+    function loadPayments() {
+
+        updateBuyerWalletDisplay();
+
+
+        const container =
+            document.getElementById(
+                "paymentsContainer"
+            );
+
+
+        const payments =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketPayments"
+                )
+            ) || [];
+
+
+        const buyer =
+            getCurrentBuyer();
+
+
+        /*
+         * If a buyer has been identified,
+         * only display their payments.
+         */
+
+        let buyerPayments =
+            payments;
+
+
+        if (buyer) {
+
+            buyerPayments =
+                payments.filter(function(payment) {
+
+                    return (
+                        String(payment.requesterName || "")
+                            .toLowerCase() ===
+                        String(buyer.name || "")
+                            .toLowerCase()
+                    );
+
+                });
+
+        }
+
+
+        if (buyerPayments.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="payment-empty">
+
+                    <strong>
+                        No service payments yet.
+                    </strong>
+
+                    <p style="margin-top:8px;">
+                        Once a provider completes one of
+                        your requested services, the payment
+                        will appear here.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        /*
+         * Show newest payments first.
+         */
+
+        buyerPayments.sort(function(a, b) {
+
+            return (
+                new Date(
+                    b.createdAt || 0
+                ) -
+                new Date(
+                    a.createdAt || 0
+                )
+            );
+
+        });
+
+
+        container.innerHTML = "";
+
+
+        buyerPayments.forEach(function(payment) {
+
+            const card =
+                document.createElement("div");
+
+
+            const isPaid =
+                payment.status === "Paid";
+
+
+            card.className =
+                "payment-card " +
+                (isPaid ? "paid" : "required");
+
+
+            const amount =
+                Number(payment.amount || 0);
+
+
+            const completedDate =
+                payment.completedAt
+                    ? new Date(
+                        payment.completedAt
+                    ).toLocaleString()
+                    : "Recently";
+
+
+            let actionHtml = "";
+
+
+            if (isPaid) {
+
+                actionHtml = `
+
+                    <div class="payment-note">
+
+                        Payment completed successfully.
+
+                        <strong>
+                            Paid from EduMarket Wallet
+                        </strong>
+
+                        ${
+                            payment.paidAt
+                                ? " on " +
+                                  new Date(
+                                      payment.paidAt
+                                  ).toLocaleString()
+                                : ""
+                        }
+
+                    </div>
+
+                `;
+
+            } else {
+
+                actionHtml = `
+
+                    <button
+                        class="pay-now-btn"
+                        onclick="payServicePayment('${escapeHtml(payment.id)}')">
+
+                        Pay Now — R${amount.toFixed(2)}
+
+                    </button>
+
+                    <div class="payment-note">
+
+                        Payment is being held as required
+                        by the completed service.
+                        Make sure your EduMarket Wallet
+                        has enough funds before paying.
+
+                    </div>
+
+                `;
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="payment-header">
+
+                    <div>
+
+                        <div class="payment-title">
+
+                            ${escapeHtml(
+                                payment.serviceTitle ||
+                                "Student Service"
+                            )}
+
+                        </div>
+
+                        <div class="payment-provider">
+
+                            Provider:
+                            <strong>
+                                ${escapeHtml(
+                                    payment.provider ||
+                                    "Student Seller"
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="payment-amount">
+
+                            R${amount.toFixed(2)}
+
+                        </div>
+
+                        <div style="margin-top:6px;">
+
+                            <span class="
+                                payment-status
+                                ${isPaid ? "paid" : "required"}
+                            ">
+
+                                ${
+                                    isPaid
+                                        ? "Paid"
+                                        : "Payment Required"
+                                }
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="payment-details">
+
+                    <div class="payment-detail-box">
+
+                        <span>
+                            Completed
+                        </span>
+
+                        <strong>
+                            ${escapeHtml(completedDate)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-detail-box">
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <strong>
+
+                            ${
+                                payment.paymentMethod ||
+                                "EduMarket Wallet"
+                            }
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-detail-box">
+
+                        <span>
+                            Buyer
+                        </span>
+
+                        <strong>
+                            ${escapeHtml(
+                                payment.requesterName ||
+                                "Current Buyer"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                ${actionHtml}
+
+            `;
+
+
+            container.appendChild(card);
+
+        });
+    }
+
+
+    /* =========================================
+       PAY FOR SERVICE
+       ========================================= */
+
+    function payServicePayment(paymentId) {
+
+        const payments =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketPayments"
+                )
+            ) || [];
+
+
+        const payment =
+            payments.find(function(item) {
+
+                return String(item.id) ===
+                    String(paymentId);
+
+            });
+
+
+        if (!payment) {
+
+            alert(
+                "Payment could not be found."
+            );
+
+            return;
+        }
+
+
+        if (payment.status === "Paid") {
+
+            alert(
+                "This payment has already been completed."
+            );
+
+            loadPayments();
+
+            return;
+        }
+
+
+        const amount =
+            Number(payment.amount);
+
+
+        if (!Number.isFinite(amount) || amount <= 0) {
+
+            alert(
+                "Invalid payment amount."
+            );
+
+            return;
+        }
+
+
+        const balance =
+            getBuyerWalletBalance();
+
+
+        if (balance < amount) {
+
+            alert(
+                "Insufficient EduMarket Wallet funds.\n\n" +
+                "Required: R" +
+                amount.toFixed(2) +
+                "\n" +
+                "Available: R" +
+                balance.toFixed(2)
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                "Pay R" +
+                amount.toFixed(2) +
+                " to " +
+                (payment.provider || "the service provider") +
+                " from your EduMarket Wallet?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+        }
+
+
+        /*
+         * STEP 1
+         * Deduct money from buyer wallet.
+         */
+
+        const newBuyerBalance =
+            balance - amount;
+
+
+        localStorage.setItem(
+            "eduMarketWalletBalance",
+            newBuyerBalance.toFixed(2)
+        );
+
+
+        /*
+         * STEP 2
+         * Credit the seller wallet.
+         */
+
+        const sellerWalletKey =
+            getSellerWalletKey(
+                payment.provider
+            );
+
+
+        const currentSellerBalance =
+            getSellerWalletBalance(
+                payment.provider
+            );
+
+
+        const newSellerBalance =
+            currentSellerBalance + amount;
+
+
+        localStorage.setItem(
+            sellerWalletKey,
+            newSellerBalance.toFixed(2)
+        );
+
+
+        /*
+         * STEP 3
+         * Update payment record.
+         */
+
+        payment.status =
+            "Paid";
+
+
+        payment.paymentMethod =
+            "EduMarket Wallet";
+
+
+        payment.paidAt =
+            new Date().toISOString();
+
+
+        payment.buyerWalletBefore =
+            balance;
+
+
+        payment.buyerWalletAfter =
+            newBuyerBalance;
+
+
+        payment.sellerWalletBefore =
+            currentSellerBalance;
+
+
+        payment.sellerWalletAfter =
+            newSellerBalance;
+
+
+        localStorage.setItem(
+            "eduMarketPayments",
+            JSON.stringify(payments)
+        );
+
+
+        /*
+         * STEP 4
+         * Update active job.
+         */
+
+        updateJobAfterPayment(
+            payment.jobId
+        );
+
+
+        /*
+         * STEP 5
+         * Record transaction.
+         */
+
+        const transaction = {
+
+            id:
+                "TX-" +
+                Date.now(),
+
+            type:
+                "Service Payment",
+
+            direction:
+                "Outgoing",
+
+            jobId:
+                payment.jobId || null,
+
+            requestId:
+                payment.requestId || null,
+
+            serviceId:
+                payment.serviceId || null,
+
+            serviceTitle:
+                payment.serviceTitle || "Student Service",
+
+            buyer:
+                payment.requesterName || "Buyer",
+
+            seller:
+                payment.provider || "Seller",
+
+            amount:
+                amount,
+
+            paymentMethod:
+                "EduMarket Wallet",
+
+            status:
+                "Completed",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        saveTransaction(transaction);
+
+
+        /*
+         * STEP 6
+         * Reload UI.
+         */
+
+        updateBuyerWalletDisplay();
+
+        loadPayments();
+
+
+        alert(
+            "Payment successful!\n\n" +
+            "R" +
+            amount.toFixed(2) +
+            " has been paid to " +
+            (payment.provider || "the service provider") +
+            "."
+        );
+    }
+
+
+    /* =========================================
+       UPDATE ACTIVE JOB AFTER PAYMENT
+       ========================================= */
+
+    function updateJobAfterPayment(jobId) {
+
+        if (!jobId) {
+
+            return;
+        }
+
+
+        const jobs =
+            JSON.parse(
+                localStorage.getItem(
+                    "eduMarketActiveJobs"
+                )
+            ) || [];
+
+
+        let changed = false;
+
+
+        jobs.forEach(function(job) {
+
+            if (
+                String(job.id) ===
+                String(jobId)
+            ) {
+
+                job.paymentStatus =
+                    "Paid";
+
+
+                job.paidAt =
+                    new Date().toISOString();
+
+
+                changed = true;
+
+            }
+
+        });
+
+
+        if (changed) {
+
+            localStorage.setItem(
+                "eduMarketActiveJobs",
+                JSON.stringify(jobs)
+            );
+
+        }
+    }
+
+
+    /* =========================================
+       HTML SAFETY
+       ========================================= */
+
+    function escapeHtml(value) {
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =========================================
+       INITIAL LOAD
+       ========================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadServices();
+
+            loadPayments();
+
+            updateBuyerWalletDisplay();
+
+        }
+    );
+
+
+    /*
+     * Refresh payments whenever the page
+     * becomes visible again.
+     *
+     * This is useful when the seller dashboard
+     * is open in another browser tab.
+     */
+
+    document.addEventListener(
+        "visibilitychange",
+        function() {
+
+            if (
+                document.visibilityState ===
+                "visible"
+            ) {
+
+                loadPayments();
+
+            }
+
+        }
+    );
+
+</script>
+```
+
+</body>
+</html>

@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMarket | Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================================
+           LOGIN PAGE
+           ========================================================= */
+
+        body.login-page {
+            margin: 0;
+            background: #f3f7fc;
+            color: #071b3a;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        .login-page .navbar {
+            position: relative;
+            z-index: 10;
+        }
+
+
+        /* =========================================================
+           MAIN LOGIN AREA
+           ========================================================= */
+
+        .login-main {
+            min-height: calc(100vh - 86px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 55px 6%;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(0, 169, 157, 0.12),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(23, 105, 170, 0.12),
+                    transparent 25%
+                ),
+                #f3f7fc;
+        }
+
+
+        /* =========================================================
+           LOGIN CONTAINER
+           ========================================================= */
+
+        .login-container {
+            width: 100%;
+            max-width: 1180px;
+            min-height: 650px;
+
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+
+            background: #ffffff;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(7, 27, 58, 0.15);
+
+            border: 1px solid rgba(7, 27, 58, 0.06);
+        }
+
+
+        /* =========================================================
+           LEFT BRAND PANEL
+           ========================================================= */
+
+        .login-brand-panel {
+            position: relative;
+            overflow: hidden;
+
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(0, 169, 157, 0.30),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(23, 105, 170, 0.35),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    145deg,
+                    #071b3a 0%,
+                    #0b2854 55%,
+                    #123f78 100%
+                );
+
+            color: #ffffff;
+        }
+
+
+        .login-brand-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            top: -140px;
+            right: -120px;
+        }
+
+
+        .login-brand-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(0, 169, 157, 0.18);
+
+            bottom: -120px;
+            left: -90px;
+        }
+
+
+        .brand-content,
+        .brand-bottom {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================================
+           EDUVOS LOGO
+           ========================================================= */
+
+        .brand-mini-logo {
+            width: 150px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            margin-bottom: 30px;
+        }
+
+
+        .brand-mini-logo img {
+            width: 150px;
+            max-height: 70px;
+
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================================================
+           BRAND TAG
+           ========================================================= */
+
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            width: fit-content;
+
+            padding: 8px 14px;
+
+            margin-bottom: 20px;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.09);
+
+            border: 1px solid rgba(255, 255, 255, 0.14);
+
+            color: #d9fffb;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           BRAND TITLE
+           ========================================================= */
+
+        .brand-title {
+            font-size: clamp(42px, 5vw, 66px);
+
+            line-height: 1.02;
+
+            letter-spacing: -2.5px;
+
+            margin: 0 0 18px;
+
+            font-weight: 900;
+        }
+
+
+        .brand-title span {
+            color: #00d1c1;
+        }
+
+
+        .brand-description {
+            max-width: 470px;
+
+            color: rgba(255, 255, 255, 0.78);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 0 0 35px;
+        }
+
+
+        /* =========================================================
+           FEATURES
+           ========================================================= */
+
+        .brand-features {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+
+            max-width: 500px;
+        }
+
+
+        .brand-feature {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 15px 16px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 15px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .brand-feature:hover {
+            background: rgba(255, 255, 255, 0.11);
+
+            transform: translateY(-2px);
+        }
+
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(0, 169, 157, 0.18);
+
+            color: #7ff8ef;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+
+        .feature-text strong {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .feature-text span {
+            display: block;
+
+            color: rgba(255, 255, 255, 0.55);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           BRAND FOOTER
+           ========================================================= */
+
+        .brand-bottom {
+            margin-top: 45px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+
+        .brand-bottom p {
+            margin: 0;
+
+            color: rgba(255, 255, 255, 0.62);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .brand-bottom strong {
+            color: #ffffff;
+        }
+
+
+        /* =========================================================
+           RIGHT LOGIN PANEL
+           ========================================================= */
+
+        .login-form-panel {
+            padding: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+        }
+
+
+        .login-form-wrapper {
+            width: 100%;
+
+            max-width: 415px;
+        }
+
+
+        /* =========================================================
+           FORM HEADER
+           ========================================================= */
+
+        .form-top {
+            margin-bottom: 34px;
+        }
+
+
+        .form-top .small-title {
+            display: inline-block;
+
+            margin: 0 0 10px;
+
+            color: #00a99d;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.8px;
+        }
+
+
+        .form-top h1 {
+            margin: 0 0 10px;
+
+            color: #071b3a;
+
+            font-size: 36px;
+
+            line-height: 1.15;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+        }
+
+
+        .form-top p {
+            margin: 0;
+
+            color: #6b7890;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           FORM
+           ========================================================= */
+
+        .login-form .form-group {
+            margin-bottom: 21px;
+        }
+
+
+        .login-form label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #182b46;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        .input-wrapper {
+            position: relative;
+        }
+
+
+        .input-icon {
+            position: absolute;
+
+            top: 50%;
+            left: 16px;
+
+            transform: translateY(-50%);
+
+            color: #8090a7;
+
+            font-size: 16px;
+
+            pointer-events: none;
+        }
+
+
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            height: 54px;
+
+            padding: 0 16px 0 46px;
+
+            border: 1.5px solid #dce4ef;
+
+            border-radius: 13px;
+
+            background: #f9fbfe;
+
+            color: #071b3a;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: all 0.25s ease;
+        }
+
+
+        .login-form input[type="email"]::placeholder,
+        .login-form input[type="password"]::placeholder {
+            color: #a2adbd;
+        }
+
+
+        .login-form input[type="email"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #00a99d;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px rgba(0, 169, 157, 0.10);
+        }
+
+
+        /* =========================================================
+           OPTIONS
+           ========================================================= */
+
+        .login-options {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin: 5px 0 24px;
+
+            gap: 15px;
+        }
+
+
+        .remember-me {
+            display: flex !important;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin: 0 !important;
+
+            color: #65738a !important;
+
+            font-weight: 600 !important;
+
+            font-size: 12px !important;
+
+            cursor: pointer;
+        }
+
+
+        .remember-me input {
+            width: 16px;
+            height: 16px;
+
+            accent-color: #00a99d;
+
+            cursor: pointer;
+        }
+
+
+        #forgotPassword {
+            color: #007f77;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+        }
+
+
+        #forgotPassword:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           LOGIN BUTTON
+           ========================================================= */
+
+        .login-submit {
+            width: 100%;
+
+            height: 56px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00a99d,
+                    #008f86
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 24px rgba(0, 169, 157, 0.22);
+
+            transition: all 0.25s ease;
+        }
+
+
+        .login-submit:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 30px rgba(0, 169, 157, 0.28);
+        }
+
+
+        .login-submit:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           MESSAGE
+           ========================================================= */
+
+        .login-message {
+            min-height: 20px;
+
+            margin: 13px 0 0;
+
+            color: #007f77;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           DIVIDER
+           ========================================================= */
+
+        .login-divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin: 27px 0 23px;
+
+            color: #a4afbd;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #e7ecf3;
+        }
+
+
+        /* =========================================================
+           REGISTER TEXT
+           ========================================================= */
+
+        .register-text {
+            margin: 0;
+
+            text-align: center;
+
+            color: #758197;
+
+            font-size: 13px;
+        }
+
+
+        .register-text a {
+            color: #007f77;
+
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .login-page footer {
+            padding: 28px 20px;
+
+            background: #071b3a;
+
+            color: rgba(255, 255, 255, 0.75);
+
+            text-align: center;
+        }
+
+
+        .login-page .footer-logo {
+            margin-bottom: 7px;
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            color: #ffffff;
+        }
+
+
+        .login-page .footer-logo span {
+            color: #00c8b8;
+        }
+
+
+        .login-page footer p {
+            margin: 4px 0;
+
+            font-size: 12px;
+        }
+
+
+        .login-page .copyright {
+            color: rgba(255, 255, 255, 0.40);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .login-main {
+                padding: 35px 4%;
+            }
+
+
+            .login-container {
+                grid-template-columns: 1fr;
+
+                max-width: 650px;
+            }
+
+
+            .login-brand-panel {
+                min-height: 430px;
+
+                padding: 40px;
+            }
+
+
+            .brand-title {
+                font-size: 48px;
+            }
+
+
+            .login-form-panel {
+                padding: 45px 40px;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .login-main {
+                padding: 20px 15px;
+            }
+
+
+            .login-container {
+                border-radius: 20px;
+            }
+
+
+            .login-brand-panel {
+                padding: 30px 25px;
+
+                min-height: auto;
+            }
+
+
+            .brand-mini-logo {
+                width: 125px;
+
+                height: 55px;
+
+                margin-bottom: 22px;
+            }
+
+
+            .brand-mini-logo img {
+                width: 125px;
+
+                max-height: 55px;
+            }
+
+
+            .brand-title {
+                font-size: 40px;
+
+                letter-spacing: -1.5px;
+            }
+
+
+            .brand-description {
+                font-size: 14px;
+            }
+
+
+            .brand-features {
+                grid-template-columns: 1fr;
+            }
+
+
+            .brand-bottom {
+                margin-top: 25px;
+            }
+
+
+            .login-form-panel {
+                padding: 35px 25px;
+            }
+
+
+            .form-top h1 {
+                font-size: 30px;
+            }
+
+
+            .login-options {
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="login-page">
+
+
+    <!-- =========================================================
+         NAVIGATION BAR
+         ========================================================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>Edu</span>Market
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="marketplace.html">
+                Marketplace
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="opportunities.html">
+                Opportunities
+            </a>
+
+            <a href="campusride.html">
+                CampusRide
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="login.html"
+                class="login-btn"
+            >
+                Login
+            </a>
+
+
+            <a
+                href="register.html"
+                class="register-btn"
+            >
+                Register
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         LOGIN MAIN
+         ========================================================= -->
+
+    <main class="login-main">
+
+        <div class="login-container">
+
+
+            <!-- =================================================
+                 LEFT BRAND PANEL
+                 ================================================= -->
+
+            <section class="login-brand-panel">
+
+                <div class="brand-content">
+
+
+                    <!-- EDUVOS LOGO -->
+
+                    <div class="brand-mini-logo">
+
+                        <img
+                            src="images/eduvos.png"
+                            alt="Eduvos Logo"
+                        >
+
+                    </div>
+
+
+                    <!-- BADGE -->
+
+                    <div class="brand-tag">
+
+                        ● Eduvos Student Marketplace
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <h2 class="brand-title">
+
+                        Your campus.<br>
+
+                        Your <span>market.</span>
+
+                    </h2>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="brand-description">
+
+                        Buy, sell, collaborate and connect with
+                        students across the Eduvos community —
+                        all in one place.
+
+                    </p>
+
+
+                    <!-- FEATURES -->
+
+                    <div class="brand-features">
+
+
+                        <!-- FEATURE 1 -->
+
+                        <div class="brand-feature">
+
+                            <div class="feature-icon">
+                                ✓
+                            </div>
+
+
+                            <div class="feature-text">
+
+                                <strong>
+                                    Student Sellers
+                                </strong>
+
+                                <span>
+                                    Buy directly from campus
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 2 -->
+
+                        <div class="brand-feature">
+
+                            <div class="feature-icon">
+                                $
+                            </div>
+
+
+                            <div class="feature-text">
+
+                                <strong>
+                                    Student Wallet
+                                </strong>
+
+                                <span>
+                                    Simple campus payments
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 3 -->
+
+                        <div class="brand-feature">
+
+                            <div class="feature-icon">
+                                ↗
+                            </div>
+
+
+                            <div class="feature-text">
+
+                                <strong>
+                                    Opportunities
+                                </strong>
+
+                                <span>
+                                    Turn skills into income
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURE 4 -->
+
+                        <div class="brand-feature">
+
+                            <div class="feature-icon">
+                                →
+                            </div>
+
+
+                            <div class="feature-text">
+
+                                <strong>
+                                    CampusRide
+                                </strong>
+
+                                <span>
+                                    Student transport made easy
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BRAND FOOTER -->
+
+                <div class="brand-bottom">
+
+                    <p>
+                        <strong>
+                            Built by Students. Backed by Campus.
+                        </strong>
+                    </p>
+
+                    <p>
+                        EduMarket HackJam Prototype
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RIGHT LOGIN FORM
+                 ================================================= -->
+
+            <section class="login-form-panel">
+
+                <div class="login-form-wrapper">
+
+
+                    <!-- FORM HEADER -->
+
+                    <div class="form-top">
+
+                        <p class="small-title">
+                            WELCOME BACK
+                        </p>
+
+
+                        <h1>
+                            Login to EduMarket
+                        </h1>
+
+
+                        <p>
+                            Sign in to access your marketplace,
+                            opportunities and campus services.
+                        </p>
+
+                    </div>
+
+
+                    <!-- LOGIN FORM -->
+
+                    <form
+                        id="loginForm"
+                        class="login-form"
+                    >
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    @
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    ●
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- OPTIONS -->
+
+                        <div class="login-options">
+
+
+                            <label class="remember-me">
+
+                                <input
+                                    type="checkbox"
+                                    id="remember"
+                                >
+
+                                Remember me
+
+                            </label>
+
+
+                            <a
+                                href="#"
+                                id="forgotPassword"
+                            >
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="login-submit"
+                        >
+                            Login to EduMarket
+                        </button>
+
+
+                        <!-- LOGIN MESSAGE -->
+
+                        <p
+                            id="loginMessage"
+                            class="login-message"
+                        ></p>
+
+
+                    </form>
+
+
+                    <!-- DIVIDER -->
+
+                    <div class="login-divider">
+
+                        <span>
+                            OR
+                        </span>
+
+                    </div>
+
+
+                    <!-- REGISTER -->
+
+                    <p class="register-text">
+
+                        Don't have an account?
+
+                        <a href="register.html">
+                            Create an account
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <span>
+                Edu
+            </span>Market
+
+        </div>
+
+
+        <p>
+            Built by students. Backed by campus.
+        </p>
+
+
+        <p class="copyright">
+            EduMarket HackJam Prototype
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         LOGIN JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        /* =====================================================
+           LOGIN
+           ===================================================== */
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value
+                        .trim();
+
+
+                if (
+                    email === "" ||
+                    password === ""
+                ) {
+
+                    loginMessage.textContent =
+                        "Please enter your email and password.";
+
+                    return;
+                }
+
+
+                loginMessage.textContent =
+                    "Login submitted successfully. Backend authentication will be connected next.";
+
+            }
+        );
+
+
+        /* =====================================================
+           FORGOT PASSWORD
+           ===================================================== */
+
+        forgotPassword.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+
+                loginMessage.textContent =
+                    "Password recovery will be available in the next version.";
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
